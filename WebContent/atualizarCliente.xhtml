@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <head jsf:id="head">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <title>Atualizar Cadastro</title>
+
+        <link rel="stylesheet" type="text/css"
+              href="#{request.contextPath}/resources/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <h:outputStylesheet name="css/stylesheet.css"/>
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body jsf:id="body">
+        <header>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/">Cadastro</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+<h:form>
+ <div class="container">
+            <div class="row">
+                        <fieldset>
+                            <legend>Dados pessoais - Cliente </legend>
+                            <div class="row">
+                            </div>
+       <h:form>
+	<h:panelGrid columns="2">
+		<h:outputText value="Código:"></h:outputText>
+		<h:outputText value="#{cli.dto.id}"></h:outputText>
+		<h:outputText value="Nome:"></h:outputText>
+		<h:inputText value="#{cli.dto.nome}"></h:inputText>
+		<h:outputText value="E-mail:"></h:outputText>
+		<h:inputText value="#{cli.dto.email}"></h:inputText>
+		<h:outputText value="CPF:"></h:outputText>
+		<h:inputText value="#{cli.dto.cpf}"></h:inputText>
+		<h:outputText value="telefone:"></h:outputText>
+		<h:inputText value="#{cli.dto.telefone}"></h:inputText>
+
+
+        <h:panelGrid columns="3" cellpadding="5" cellspacing="5">
+                               
+		<h:commandButton  class="btn btn-primary" value="Atualizar" action="#{cli.update}"></h:commandButton>
+		<h:commandButton  class="btn btn-primary" action="inserirCliente" immediate="true" value="Cancelar"></h:commandButton>
+	</h:panelGrid>
+			</h:panelGrid>
+		</h:form>
+	</fieldset>
+	</div>
+	</div>
+</h:form>
+
+        
+    </body>
+</html>

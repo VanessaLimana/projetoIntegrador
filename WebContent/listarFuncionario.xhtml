@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf" >
+
+    <head jsf:id="head">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        
+
+        <title>Cadastro de Funcionarios</title>
+
+        <link rel="stylesheet" type="text/css"
+              href="#{request.contextPath}/resources/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <h:outputStylesheet name="css/site.css"/>
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body jsf:id="body">
+        <header>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/">Cadastro</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
+                    <form jsf:id="form" jsf:prependId="false">
+                        <fieldset>
+                            <legend>Dados Funcionario</legend>
+                            
+<!-- id, nome, endereco, cpf, telefone, sexo, cargo, email, senha
+ -->
+
+<!-- <h:dataTable value="#{fun.funcionarios}" var="funcionario" styleClass="listagem" headerClass="header" rowClasses="coluna1, coluna2, coluna3, coluna4, coluna5, coluna6, coluna7, coluna8">
+ -->
+     <h:dataTable value="#{fun.funcionarios}" var="funcionario" border="1">
+ 
+<h:column >
+	<f:facet name="header" >
+		<h:outputText value="Código" ></h:outputText>
+	</f:facet>
+	<h:outputText value="#{funcionario.id}"></h:outputText>
+</h:column>
+
+<h:column>
+	<f:facet name="header">
+		<h:outputText value="Nome"></h:outputText>
+	</f:facet>
+	<h:outputText value="#{funcionario.nome}"></h:outputText>
+</h:column>
+
+<!-- endereco -->
+<h:column>
+	<f:facet name="header">
+		<h:outputText value="endereco"></h:outputText>
+	</f:facet>
+	<h:outputText value="#{funcionario.endereco}"></h:outputText>
+</h:column>
+
+<!-- cpf -->
+<h:column>
+	<f:facet name="header">
+		<h:outputText value="cpf"></h:outputText>
+	</f:facet>
+	<h:outputText value="#{funcionario.cpf}"></h:outputText>
+</h:column>
+
+<!-- sexo -->
+<h:column>
+	<f:facet name="header">
+		<h:outputText value="telefone"></h:outputText>
+	</f:facet>
+	<h:outputText value="#{funcionario.telefone}"></h:outputText>
+</h:column>
+
+<!-- telefone -->
+
+<h:column>
+	<f:facet name="header">
+		<h:outputText value="sexo"></h:outputText>
+	</f:facet>
+	<h:outputText value="#{funcionario.sexo}"></h:outputText>
+</h:column>
+
+
+<h:column>
+	<f:facet name="header">
+		<h:outputText value="cargo"></h:outputText>
+	</f:facet>
+	<h:outputText value="#{funcionario.cargo}"></h:outputText>
+</h:column>
+
+<h:column>
+	<f:facet name="header">
+		<h:outputText value="email"></h:outputText>
+	</f:facet>
+	<h:outputText value="#{funcionario.email}"></h:outputText>
+</h:column>
+
+<h:column>
+	<f:facet name="header">
+		<h:outputText value="senha"></h:outputText>
+	</f:facet>
+	<h:outputText value="#{funcionario.email}" disable="true"></h:outputText>
+</h:column>
+
+<h:column>
+	<f:facet name="header">
+		<h:outputText value="Ações"></h:outputText>
+	</f:facet>
+	
+
+	<h:commandLink action="atualizar" actionListener="#{fun.sel}" value="EDITAR"></h:commandLink>
+	<br></br>
+	<h:commandLink action="excluir" actionListener="#{fun.sel}" value="APAGAR"></h:commandLink>
+</h:column>
+</h:dataTable>
+<br></br><br></br>
+<h:commandButton value="Voltar" class="btn btn-primary" action="inserirFuncionario" actionListener="#{fun.insert}"></h:commandButton>
+            	 </fieldset>
+        	</form>
+    	 </div>
+   	 </div>
+    </div>
+              
+                           
+
+        <h:outputScript name="js/jquery-3.2.1.min.js"/>
+        <h:outputScript name="bootstrap/3.3.7/js/bootstrap.min.js"/>
+        <h:outputScript name="js/jquery.mask.min.js"/>
+        <h:outputScript name="js/jquery.maskMoney.min.js"/>
+        <h:outputScript name="js/jquery.validate.min.js"/>
+        <h:outputScript name="js/additional-methods.min.js"/>
+        <h:outputScript name="js/localization/messages_pt_BR.min.js"/>
+        <h:outputScript name="js/script.js"/>
+      
+    </body>
+</html>   

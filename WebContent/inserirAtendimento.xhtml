@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+
+<head jsf:id="head">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+<title>Cadastro de Atendimento</title>
+
+<link rel="stylesheet" type="text/css"
+	href="#{request.contextPath}/resources/bootstrap/3.3.7/css/bootstrap.min.css" />
+<h:outputStylesheet name="css/stylesheet.css" />
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+<body jsf:id="body">
+	<header>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">Cadastro</a>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
+				<form jsf:id="form" jsf:prependId="false">
+					<fieldset>
+						<legend>Dados Atendimento</legend>
+
+
+						<!-- funcionariochave -->
+						<div class="row">
+							<div class="col-lg-12 col-md-12">
+								<div class="form-group">
+								<label jsf:for="nome">Selecione um funcionario:</label>
+								<br></br>
+									<!--quando o usuario selecionar o funcionario desejado, o valor sera guardado
+									na variavel abaixo a ate.funcionario-->		
+									<h:selectOneMenu value="#{ate.functionario}">
+										<f:selectItems value="#{ate.atendimentosList}" 
+											var="a" itemLabel="#{a.funcionariochave.nome}"
+											styleClass="text-danger" itemValue="#{a.funcionariochave}" />
+									</h:selectOneMenu>
+								</div>
+							</div>
+						</div>
+						
+						
+						<!-- clientechave -->
+						<div class="row">
+							<div class="col-lg-12 col-md-12">
+								<div class="form-group">
+								<label jsf:for="nomecliente">Selecione o nome do cliente:</label>
+								<br></br>
+									<!--quando o usuario selecionar o funcionario desejado, o valor sera guardado
+									na variavel abaixo a ate.funcionario-->		
+									<h:selectOneMenu value="#{ate.client}">
+										<f:selectItems value="#{ate.atendimentosList}" 
+											var="a" itemLabel="#{a.clientechave.nomecliente}"
+											styleClass="text-danger" itemValue="#{a.clientechave}" />
+									</h:selectOneMenu>
+								</div>
+							</div>
+						</div>
+
+
+
+					  
+						<!-- clientechave -->
+						<div class="row">
+							<div class="col-lg-12 col-md-12">
+								<div class="form-group">
+								<label jsf:for="descricao">Selecione o produto:</label>
+								<br></br>
+									<!--quando o usuario selecionar o funcionario desejado, o valor sera guardado
+									na variavel abaixo a ate.funcionario-->		
+									<h:selectOneMenu value="#{ate.tprod}">
+										<f:selectItems value="#{ate.atendimentosList}" 
+											var="a" itemLabel="#{a.produtochave.descricao}"
+											styleClass="text-danger" itemValue="#{a.produtochave}" />
+									</h:selectOneMenu>
+								</div>
+							</div>
+						</div> 
+
+
+
+
+								<!-- dia -->
+						<div class="row">
+							<div class="col-lg-12 col-md-12">
+								<div class="form-group #{!nome.valid ? 'has-error' : ''}">
+									<label jsf:for="nome">Dia</label> <input type="text"
+										jsf:id="dia" jsf:binding="#{dia}" class="form-control"
+										placeholder="00/00/0000" jsf:value="#{ate.dto.dia}" />
+									<h:message for="dia" styleClass="text-danger" />
+
+								</div>
+							</div>
+						</div>
+
+						<!--  CPF -->
+						<div class="row">
+							<div class="col-lg-4 col-md-4">
+								<div class="form-group #{!horario.valid ? 'has-error' : ''}">
+									<label jsf:for="horario">Horario</label> <input type="text"
+										jsf:id="horario" jsf:binding="#{horario}" class="form-control"
+										placeholder="00:00" jsf:value="#{ate.dto.horario}" />
+
+									<h:message for="horario" styleClass="text-danger" />
+								</div>
+							</div>
+						</div>
+						
+						<!-- EMAIL -->
+						<div class="row">
+							<div class="col-lg-12 col-md-12">
+								<div class="form-group #{!observacao.valid ? 'has-error' : ''}">
+									<label jsf:for="observacao">Observacao</label> <input
+										type="text" jsf:id="observacao" jsf:binding="#{observacao}"
+										class="form-control" placeholder="Observacao"
+										jsf:value="#{ate.dto.observacao}" />
+
+									<h:message for="observacao" styleClass="text-danger" />
+
+								</div>
+							</div>
+						</div>
+
+
+					</fieldset>
+
+					<!-- sexo -->
+					<!-- final -->
+					<br></br>
+					<h:panelGrid columns="3" cellpadding="5" cellspacing="5">
+
+						<input type="submit" class="btn btn-primary"
+							jsf:action="#{ate.save}" value="Cadastrar" />
+
+
+						<input type="submit" class="btn btn-primary" immediate="true"
+							jsf:action="erro" value="Cancelar" />
+
+						<input type="submit" class="btn btn-primary" immediate="true"
+							jsf:action="listarClientes" value="Editar / Inativar" />
+
+					</h:panelGrid>
+
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<h:outputScript name="js/jquery-3.2.1.min.js" />
+	<h:outputScript name="bootstrap/3.3.7/js/bootstrap.min.js" />
+	<h:outputScript name="js/jquery.mask.min.js" />
+	<h:outputScript name="js/jquery.maskMoney.min.js" />
+	<h:outputScript name="js/jquery.validate.min.js" />
+	<h:outputScript name="js/additional-methods.min.js" />
+	<h:outputScript name="js/localization/messages_pt_BR.min.js" />
+	<h:outputScript name="js/script.js" />
+
+</body>
+</html>

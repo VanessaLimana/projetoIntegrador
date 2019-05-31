@@ -1,0 +1,31 @@
+
+.listagem{
+	border-color: black;
+	border-width: 100px;
+	border-bottom-style: solid;
+	background-color: pink;
+	
+}
+
+.header{
+	font-family: Arial;
+	font-size: 14px;
+	color: yellow;
+	background-color: red;
+	padding: 5px;
+}
+
+.coluna1{
+	font-family: Arial;
+	font-size: 12px;
+	color: black;
+	background-color: white;
+	padding: 5px;
+}
+.coluna2{
+	font-family: Arial;
+	font-size: 12px;
+	color: white;
+	background-color: silver;
+	padding: 5px;
+}

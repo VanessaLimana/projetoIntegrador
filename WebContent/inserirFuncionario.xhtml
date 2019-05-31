@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf" >
+
+ 
+    
+
+    <head jsf:id="head">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        
+
+        <title>Cadastro de Funcionarios</title>
+
+        <link rel="stylesheet" type="text/css"
+              href="#{request.contextPath}/resources/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <h:outputStylesheet name="css/stylesheet.css"/>
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body jsf:id="body">
+        <header>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/">Cadastro</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
+                    <form jsf:id="form" jsf:prependId="false">
+                        <fieldset>
+                            <legend>Dados Funcionario</legend>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="form-group #{!nome.valid ? 'has-error' : ''}">
+                                        <label jsf:for="nome">Nome</label>
+                                        <input type="text"
+                                               jsf:id="nome"
+                                               jsf:binding="#{nome}"
+                                               class="form-control"
+                                               placeholder="Meu Nome"
+                                               jsf:value="#{fun.dto.nome}"/>
+                                               
+                                               
+                                            <h:message for="nome" styleClass="text-danger"/>
+                                            
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!--  CPF -->
+                             <div class="row">
+                                <div class="col-lg-4 col-md-4">
+                                <div class="form-group #{!cpf.valid ? 'has-error' : ''}">
+                                        <label jsf:for="cpf">CPF</label>
+                                        <input type="text"
+                                               jsf:id="cpf"
+                                               jsf:binding="#{cpf}"
+                                               class="form-control"
+                                               placeholder="000.000.000-00"
+                                               jsf:value="#{fun.dto.cpf}"/>
+
+                                        <h:message for="cpf" styleClass="text-danger"/>
+                                  </div>  
+                                </div>
+                              </div>
+							<!-- EMAIL -->                   
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="form-group #{!nome.valid ? 'has-error' : ''}">
+                                        <label jsf:for="nome">E-mail</label>
+                                        <input type="text"
+                                               jsf:id="email"
+                                               jsf:binding="#{email}"
+                                               class="form-control"
+                                               placeholder="E-mail"
+                                               jsf:value="#{fun.dto.email}"/>
+
+                                        <h:message for="email" styleClass="text-danger"/>
+                                       
+                                    </div>
+                                </div>
+                            </div>   
+                            
+                            							<!-- Sexo -->                   
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="form-group #{!sexo.valid ? 'has-error' : ''}">
+                                        <label jsf:for="nome">Sexo</label>
+                                        <input type="text"
+                                               jsf:id="sexo"
+                                               jsf:binding="#{sexo}"
+                                               class="form-control"
+                                               placeholder="Sexo (F) ou (M)"
+                                               jsf:value="#{fun.dto.sexo}"/>
+
+                                        <h:message for="sexo" styleClass="text-danger"/>
+                                       
+                                    </div>
+                                </div>
+                            </div>   
+                            
+                            
+                               
+                            <br></br>      
+                       <!-- telefone -->  
+                       <div class="row">       
+                           <div class="col-lg-12 col-md-12">
+                                    <div class="form-group #{!telefone.valid ? 'has-error' : ''}">
+                                        <label jsf:for="telefone">Telefone</label>
+                                        <input type="text"
+                                               jsf:id="telefone"
+                                               jsf:binding="#{telefone}"
+                                               class="form-control"
+                                               placeholder="telefone"
+                                               jsf:value="#{fun.dto.telefone}"/>
+                                               
+                                               
+                                            <h:message for="telefone" styleClass="text-danger"/>
+                                    </div>
+                                    </div>
+                            </div>
+                            
+                            <!-- cargo -->
+                            
+                          <div class="row">       
+                           <div class="col-lg-12 col-md-12">
+                                    <div class="form-group #{!cargo.valid ? 'has-error' : ''}">
+                                        <label jsf:for="cargo">Cargo</label>
+                                        <input type="text"
+                                               jsf:id="cargo"
+                                               jsf:binding="#{cargo}"
+                                               class="form-control"
+                                               placeholder="cargo"
+                                               jsf:value="#{fun.dto.cargo}"/>
+                                               
+                                               
+                                            <h:message for="cargo" styleClass="text-danger"/>
+                                    </div>
+                                    </div>
+                            </div>
+                            
+                            <!-- senha -->
+                               <div class="row">       
+                           <div class="col-lg-12 col-md-12">
+                                    <div class="form-group #{!senha.valid ? 'has-error' : ''}">
+                                        <label jsf:for="senha">Senha</label>
+                                        <input type="text"
+                                               jsf:id="senha"
+                                               jsf:binding="#{senha}"
+                                               class="form-control"
+                                               placeholder="senha"
+                                               jsf:value="#{fun.dto.senha}" />
+                                               
+                                               
+                                            <h:message for="senha" styleClass="text-danger"/>
+                                    </div>
+                                    </div>
+                            </div>
+							<!-- endereco -->                            
+           					<div class="row">       
+                           <div class="col-lg-12 col-md-12">
+                                    <div class="form-group #{!endereco.valid ? 'has-error' : ''}">
+                                        <label jsf:for="endereco">Endereco</label>
+                                        <input type="text"
+                                               jsf:id="endereco"
+                                               jsf:binding="#{endereco}"
+                                               class="form-control"
+                                               placeholder="endereco"
+                                               jsf:value="#{fun.dto.endereco}" />
+                                               
+                                               
+                                            <h:message for="endereco" styleClass="text-danger"/>
+                                    </div>
+                                    </div>
+                            </div>
+                       </fieldset>  
+                 
+                       <!-- sexo -->
+  <!-- final -->      
+                <br></br>
+                <h:panelGrid columns="3" cellpadding="2" cellspacing="2">
+                
+                 <input type="submit"
+                               class="btn btn-primary"
+                               jsf:action="#{fun.save}"
+                               value="Cadastrar"/>
+                               
+                                                             
+                  <input type="submit"
+                               class="btn btn-primary"
+                               immediate="true"
+                               jsf:action="listarFuncionario.xhtml" 
+                                value="Cancelar"/>
+                                
+                                                                
+                  <input type="submit"
+                               class="btn btn-primary"
+                               immediate="true"
+                               jsf:action="listarFuncionario" 
+                               value="Editar / Inativar"/> 
+                                              
+                                              
+                 </h:panelGrid>
+                                             
+                              
+                </form>
+                </div>
+            </div>
+        </div>
+
+        <h:outputScript name="js/jquery-3.2.1.min.js"/>
+        <h:outputScript name="bootstrap/3.3.7/js/bootstrap.min.js"/>
+        <h:outputScript name="js/jquery.mask.min.js"/>
+        <h:outputScript name="js/jquery.maskMoney.min.js"/>
+        <h:outputScript name="js/jquery.validate.min.js"/>
+        <h:outputScript name="js/additional-methods.min.js"/>
+        <h:outputScript name="js/localization/messages_pt_BR.min.js"/>
+        <h:outputScript name="js/script.js"/>
+      
+    </body>
+</html>   
