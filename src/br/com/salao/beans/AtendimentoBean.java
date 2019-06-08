@@ -14,10 +14,11 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
 import br.com.salao.dao.AtendimentoDAO;
+import br.com.salao.dao.FuncionarioDAO;
 import br.com.salao.dto.AtendimentoDTO;
 import br.com.salao.dto.ClienteDTO;
 import br.com.salao.dto.FuncionarioDTO;
-import br.com.salao.dto.TipoProdutoDTO;
+import br.com.salao.dto.TipoServicoDTO;
 
 @ManagedBean(name="ate")
 @ViewScoped
@@ -28,7 +29,8 @@ public class AtendimentoBean {
 	private DataModel<AtendimentoDTO> atendimentos;
 	private FuncionarioDTO functionario;
 	private ClienteDTO client;
-	private TipoProdutoDTO tprod;
+	private TipoServicoDTO tprod;
+	private FuncionarioDAO funcionarioDao;
 
 
 	
@@ -36,11 +38,19 @@ public class AtendimentoBean {
 	@PostConstruct
 	public void init() {
 		this.atendimentoDao = new AtendimentoDAO();
+		this.funcionarioDao = new FuncionarioDAO();
+	}
+
+	public List<FuncionarioDTO> getFuncionariosList() {
+		List<FuncionarioDTO> test = this.funcionarioDao.findAll(); 
+		System.out.println(test);
+		return this.funcionarioDao.findAll();
 	}
 	
 	public List<AtendimentoDTO> getAtendimentosList() {
 		return this.atendimentoDao.getAll();
 	}
+	
 	
 	public AtendimentoDTO getDto(){
 		return this.atendimentoDto;
@@ -105,7 +115,7 @@ public class AtendimentoBean {
 	}
 
 	//essa propriedade abaixo vai ter o funcionario selecionado pelo usuario...
-	//ai quando ele clicar em insert....é essa propriedade que voce vai salvar no banco...ou fazer o que quiser rs...
+	//ai quando ele clicar em insert....é essa propriedade que voce vai salvar no banco..
 	
 	public FuncionarioDTO getFunctionario() {
 		return functionario;
@@ -125,25 +135,13 @@ public class AtendimentoBean {
 		this.client = client;
 	}
 
-	public TipoProdutoDTO getTprod() {
+	public TipoServicoDTO getTprod() {
 		return tprod;
 	}
 
-	public void setTprod(TipoProdutoDTO tprod) {
-		System.out.println("Cliente selecionado..." + tprod.getDescricao());
+	public void setTprod(TipoServicoDTO tprod) {
+		System.out.println("Serviço selecionado..." + tprod.getDescricaoserv());
 		this.tprod = tprod;
 	}
 	
-	/*
-	
-	public TipoProdutoDTO getTipoProduto() {
-		return tprod;
-	}
-
-	public void setTipoProduto(TipoProdutoDTO tprod) {
-		System.out.println("Tipo Produto selecionado..." + tprod.getDescricao());
-		this.tprod = tprod;
-	
-	}
-	*/
 }

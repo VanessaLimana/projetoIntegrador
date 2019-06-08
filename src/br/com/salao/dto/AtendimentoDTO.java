@@ -5,16 +5,16 @@ import java.sql.SQLException;
 
 import br.com.salao.dao.ClienteDAO;
 import br.com.salao.dao.FuncionarioDAO;
-import br.com.salao.dao.TipoProdutoDAO;
+import br.com.salao.dao.TipoServicoDAO;
 
 public class AtendimentoDTO {
 	private int id;
 	private FuncionarioDTO funcionariochave;
 	private ClienteDTO clientechave;
-	private String tiposervicochave;
-	private TipoProdutoDTO produtochave;
+	private TipoServicoDTO tiposervicochave;
 	private String dia;
-	private String horario;
+	private String horarioinicial;
+	private String horariofinal;
 	private String observacao;	
 	
 	public AtendimentoDTO(){
@@ -26,11 +26,12 @@ public class AtendimentoDTO {
 			this.id = result.getInt("id");
 			this.clientechave = new ClienteDAO().getById(result.getInt("clientechave"));
 			this.funcionariochave = new FuncionarioDAO().getById(result.getInt("funcionariochave"));
+			this.tiposervicochave = new TipoServicoDAO().getById(result.getInt("tiposervicochave"));
 			this.dia = result.getString("dia");
-			this.horario = result.getString("horario");
+			this.horarioinicial = result.getString("horarioinicial");
+			this.horariofinal = result.getString("horariofinal");
+
 			this.observacao = result.getString("observacao");
-			this.produtochave = new TipoProdutoDAO().getById(result.getInt("produtochave"));
-			this.tiposervicochave = result.getString("tiposervicochave");
 			
 			
 		} catch (SQLException e) {
@@ -39,16 +40,15 @@ public class AtendimentoDTO {
 		
 	}
 	
-	public AtendimentoDTO(int id, int idFuncionario, int idCliente, String tipoServicoChave, int idTipoProduto,
-			String dia, String horario, String observacao ){
+	public AtendimentoDTO(int id, int idFuncionario, int idCliente, int idTipoServico, String dia, String horarioinicial, String horariofinal , String observacao ){
 		
 		this.setId(id);
 		this.funcionariochave = funcionariochave;
 		this.clientechave = clientechave;
-		this.tiposervicochave = tipoServicoChave;
-		this.produtochave = produtochave;
+		this.tiposervicochave = tiposervicochave;
 		this.dia = dia; 
-		this.horario = horario; 
+		this.horarioinicial = horarioinicial;
+		this.setHorariofinal(horariofinal); 
 		this.observacao = observacao; 
 
 	}	
@@ -77,20 +77,12 @@ public class AtendimentoDTO {
 		this.clientechave = clientechave;
 	}
 
-	public String getTiposervicochave() {
+	public TipoServicoDTO getServicochave() {
 		return tiposervicochave;
 	}
 
-	public void setTiposervicochave(String tiposervicochave) {
+	public void setServicochave(TipoServicoDTO tiposervicochave) {
 		this.tiposervicochave = tiposervicochave;
-	}
-
-	public TipoProdutoDTO getProdutochave() {
-		return produtochave;
-	}
-
-	public void setProdutochave(TipoProdutoDTO produtochave) {
-		this.produtochave = produtochave;
 	}
 
 	public String getDia() {
@@ -101,13 +93,15 @@ public class AtendimentoDTO {
 		this.dia = dia;
 	}
 
-	public String getHorario() {
-		return horario;
+	public String getHorarioinicial() {
+		return horarioinicial;
 	}
 
-	public void setHorario(String horario) {
-		this.horario = horario;
+	public void setHorario(String horariofinal) {
+		this.setHorariofinal(horariofinal);
 	}
+	
+	
 	
 	/*
 	 * id, funcionariochave, clientechave, tiposervicochave, produtochave, dia, horario,
@@ -120,6 +114,14 @@ public class AtendimentoDTO {
 
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
+	}
+
+	public String getHorariofinal() {
+		return horariofinal;
+	}
+
+	public void setHorariofinal(String horariofinal) {
+		this.horariofinal = horariofinal;
 	}
 	
 }

@@ -50,7 +50,7 @@ public class ClienteBean {
 		String retorno = "erro";
 		
 		dao = new ClienteDAO();
-		if(dao.delete(dto)){
+		if(dao.update2(dto)){
 			retorno = "listarCliente";
 		}
 		

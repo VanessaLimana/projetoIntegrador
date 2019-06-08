@@ -62,7 +62,7 @@ public class ClienteDAO {
 		return (pstm.executeUpdate() > 0);
 	}
 
-	public boolean delete(ClienteDTO dto) throws SQLException {
+	public boolean update2(ClienteDTO dto) throws SQLException {
 		PreparedStatement pstm = conn.prepareStatement(sql_update2);
 		pstm.setInt(1, dto.getId());
 		return (pstm.executeUpdate() > 0);

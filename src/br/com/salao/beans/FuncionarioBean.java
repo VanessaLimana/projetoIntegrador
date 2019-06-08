@@ -1,44 +1,71 @@
 package br.com.salao.beans;
 
+
+
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
 import br.com.salao.dao.FuncionarioDAO;
 import br.com.salao.dto.FuncionarioDTO;
+import br.com.salao.dto.AtendimentoDTO;
+import br.com.salao.dto.ClienteDTO;
+import br.com.salao.dto.TipoServicoDTO;
 
 @ManagedBean(name="fun")
-@SessionScoped
+@ViewScoped
 public class FuncionarioBean {
 
-	private FuncionarioDTO dto = new FuncionarioDTO();
-	private FuncionarioDAO dao;
+	private FuncionarioDTO funcionarioDto = new FuncionarioDTO();
+	private FuncionarioDAO funcionarioDao;
 	private DataModel<FuncionarioDTO> funcionarios;
+	private FuncionarioDTO functionario;
+	private ClienteDTO client;
+	private TipoServicoDTO tprod;
+
+
 	
-	public FuncionarioDTO getDto(){
-		return this.dto;
+	//Ao anotar com postconstruct basicamente manda o jsf executar esse metodo apos instanciar esse bean
+	@PostConstruct
+	public void init() {
+		this.funcionarioDao = new FuncionarioDAO();
+	}
+	 
+
+	public List<FuncionarioDTO> getFuncionariosList() {
+		List<FuncionarioDTO> test = this.funcionarioDao.findAll(); 
+		System.out.println(test);
+		return this.funcionarioDao.findAll();
 	}
 	
+	
+	
+	public FuncionarioDTO getDto(){
+		return this.funcionarioDto;
+	}
+	//tomcat ta meio bugado...
 	public void setDto(FuncionarioDTO dto){
-		this.dto = dto;
+		this.funcionarioDto = dto;
 	}
 	
 	public void sel(){
-		dto = funcionarios.getRowData();
+		funcionarioDto = funcionarios.getRowData();
 	}
 	
 	public String update() throws SQLException, ClassNotFoundException{
 		String retorno = "erro";
 		
-		dao = new FuncionarioDAO();
+		funcionarioDao = new FuncionarioDAO();
 		
-		if(dao.update(dto)){
-			retorno = "listarFuncionario";
+		if(funcionarioDao.update(funcionarioDto)){
+			retorno = "listar";
 		}
 		
 		return retorno;
@@ -47,24 +74,24 @@ public class FuncionarioBean {
 	public String apagar() throws SQLException, ClassNotFoundException{
 		String retorno = "erro";
 		
-		dao = new FuncionarioDAO();
-		if(dao.delete(dto)){
-			retorno = "listarFuncionario";
+		funcionarioDao = new FuncionarioDAO();
+		if(funcionarioDao.delete(funcionarioDto)){
+			retorno = "listar";
 		}
 		
 		return retorno;
 	}
 	
 	public void insert(){
-		dto = new FuncionarioDTO();
+		funcionarioDto = new FuncionarioDTO();
 	}
 	
 	public String save() throws SQLException, ClassNotFoundException{
 		String retorno = "erro";
 		
-		dao = new FuncionarioDAO();
+		funcionarioDao = new FuncionarioDAO();
 		
-		if(dao.insert(dto)){
+		if(funcionarioDao.insert(funcionarioDto)){
 			retorno = "listarFuncionario";
 		}
 		
@@ -72,8 +99,8 @@ public class FuncionarioBean {
 	}
 	
 	public DataModel<FuncionarioDTO> getFuncionarios() throws SQLException, ClassNotFoundException{
-		dao = new FuncionarioDAO();
-		List<FuncionarioDTO> lista = dao.getAll();
+		funcionarioDao = new FuncionarioDAO();
+		List<FuncionarioDTO> lista = funcionarioDao.findAll();
 		funcionarios = new ListDataModel<FuncionarioDTO>(lista);
 		return funcionarios;
 	}
@@ -81,4 +108,35 @@ public class FuncionarioBean {
 	public void setFuncionarios(DataModel<FuncionarioDTO> funcionarios){
 		this.funcionarios = funcionarios;
 	}
+
+	//essa propriedade abaixo vai ter o funcionario selecionado pelo usuario...
+	//ai quando ele clicar em insert....é essa propriedade que voce vai salvar no banco..
+	
+	public FuncionarioDTO getFunctionario() {
+		return functionario;
+	}
+
+	public void setFunctionario(FuncionarioDTO functionario) {
+		System.out.println("Funcionario selecionado..." + functionario.getNome());
+		this.functionario = functionario;
+	}
+	
+	public ClienteDTO getClient() {
+		return client;
+	}
+
+	public void setClient(ClienteDTO client) {
+		System.out.println("Cliente selecionado..." + client.getNomecliente());
+		this.client = client;
+	}
+
+	public TipoServicoDTO getTprod() {
+		return tprod;
+	}
+
+	public void setTprod(TipoServicoDTO tprod) {
+		System.out.println("Serviço selecionado..." + tprod.getDescricaoserv());
+		this.tprod = tprod;
+	}
+	
 }

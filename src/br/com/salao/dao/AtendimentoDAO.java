@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import br.com.salao.dto.AtendimentoDTO;
 import br.com.salao.dto.ClienteDTO;
 import br.com.salao.dto.FuncionarioDTO;
@@ -124,10 +123,10 @@ public class AtendimentoDAO {
 		PreparedStatement pstm = conn.prepareStatement(sql_insert);
 		pstm.setInt(1, dto.getFuncionariochave().getId());
 		pstm.setInt(2, dto.getClientechave().getId());
-		pstm.setString(3, dto.getTiposervicochave());
-		pstm.setInt(4, dto.getProdutochave().getId());
-		pstm.setString(5, dto.getDia());
-		pstm.setString(6, dto.getHorario());
+		pstm.setInt(3, dto.getServicochave().getId());
+		pstm.setString(4, dto.getDia());
+		pstm.setString(5, dto.getHorarioinicial());
+		pstm.setString(6, dto.getHorariofinal());
 		pstm.setString(7, dto.getObservacao());
 
 		return (pstm.executeUpdate() > 0);
@@ -136,10 +135,10 @@ public class AtendimentoDAO {
 		PreparedStatement pstm = conn.prepareStatement(sql_update);
 		pstm.setInt(1, dto.getFuncionariochave().getId());
 		pstm.setInt(2, dto.getClientechave().getId());
-		pstm.setString(3, dto.getTiposervicochave());
-		pstm.setInt(4, dto.getProdutochave().getId());
-		pstm.setString(5, dto.getDia());
-		pstm.setString(6, dto.getHorario());
+		pstm.setInt(3, dto.getServicochave().getId());
+		pstm.setString(4, dto.getDia());
+		pstm.setString(5, dto.getHorarioinicial());
+		pstm.setString(6, dto.getHorariofinal());
 		pstm.setString(7, dto.getObservacao());
 		pstm.setInt(8, dto.getId());
 		System.out.println(dto.getId());
@@ -161,11 +160,11 @@ public class AtendimentoDAO {
 			//o resultset nunca vai retornar um objeto funcionario, ele apenas retorna o id dele....não funciona como o hibernate
 			//sempre que usar um get do resultset, pense que ele sempre vai retornar um primitivo, nunca um objeto, ainda mais customizado 
 		    //que é o caso do funcionario
+			
 			while(rs.next()){
 				AtendimentoDTO dto = new AtendimentoDTO(rs);			
 				lista.add(dto);
 			}			
-			
 			
 	
 			/*
@@ -174,7 +173,6 @@ public class AtendimentoDAO {
 			 */	
 			return lista;
 		} catch(SQLException ex) {
-			//mas vai resolver blz 
 			
 			ex.printStackTrace();
 			return null;

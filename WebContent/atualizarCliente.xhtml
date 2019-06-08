@@ -45,7 +45,7 @@
 		<h:outputText value="Código:"></h:outputText>
 		<h:outputText value="#{cli.dto.id}"></h:outputText>
 		<h:outputText value="Nome:"></h:outputText>
-		<h:inputText value="#{cli.dto.nome}"></h:inputText>
+		<h:inputText value="#{cli.dto.nomecliente}"></h:inputText>
 		<h:outputText value="E-mail:"></h:outputText>
 		<h:inputText value="#{cli.dto.email}"></h:inputText>
 		<h:outputText value="CPF:"></h:outputText>
@@ -53,9 +53,9 @@
 		<h:outputText value="telefone:"></h:outputText>
 		<h:inputText value="#{cli.dto.telefone}"></h:inputText>
 
-
-        <h:panelGrid columns="3" cellpadding="5" cellspacing="5">
-                               
+        <h:panelGrid columns="3" cellpadding="10" cellspacing="10">
+   <br></br><br></br><br></br><br></br>
+                        
 		<h:commandButton  class="btn btn-primary" value="Atualizar" action="#{cli.update}"></h:commandButton>
 		<h:commandButton  class="btn btn-primary" action="inserirCliente" immediate="true" value="Cancelar"></h:commandButton>
 	</h:panelGrid>

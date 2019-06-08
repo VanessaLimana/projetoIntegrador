@@ -47,16 +47,16 @@
                             <div class="row">
                                 <div class="col-lg-12 col-md-12">
                                     <div class="form-group #{!nome.valid ? 'has-error' : ''}">
-                                        <label jsf:for="nome">Nome</label>
+                                        <label jsf:for="nomecliente">Nome</label>
                                         <input type="text"
-                                               jsf:id="nome"
-                                               jsf:binding="#{nome}"
+                                               jsf:id="nomecliente"
+                                               jsf:binding="#{nomecliente}"
                                                class="form-control"
                                                placeholder="Meu Nome"
-                                               jsf:value="#{cli.dto.nome}" />
+                                               jsf:value="#{cli.dto.nomecliente}" />
                                                
                                                
-                                            <h:message for="nome" styleClass="text-danger"/>
+                                            <h:message for="nomecliente" styleClass="text-danger"/>
                                             
                                     </div>
                                 </div>

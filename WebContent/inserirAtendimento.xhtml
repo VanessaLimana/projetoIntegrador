@@ -31,7 +31,7 @@
 				<div class="navbar-header">
 					<a class="navbar-brand" href="/">Cadastro</a>
 				</div>
-			</div>
+							</div>
 		</nav>
 	</header>
 
@@ -52,9 +52,9 @@
 									<!--quando o usuario selecionar o funcionario desejado, o valor sera guardado
 									na variavel abaixo a ate.funcionario-->		
 									<h:selectOneMenu value="#{ate.functionario}">
-										<f:selectItems value="#{ate.atendimentosList}" 
-											var="a" itemLabel="#{a.funcionariochave.nome}"
-											styleClass="text-danger" itemValue="#{a.funcionariochave}" />
+										<f:selectItems value="#{ate.funcionariosList}" 
+											var="a" itemLabel="#{a.nome}"
+											styleClass="text-danger" itemValue="#{a}" />
 									</h:selectOneMenu>
 								</div>
 							</div>
@@ -71,28 +71,25 @@
 									na variavel abaixo a ate.funcionario-->		
 									<h:selectOneMenu value="#{ate.client}">
 										<f:selectItems value="#{ate.atendimentosList}" 
-											var="a" itemLabel="#{a.clientechave.nomecliente}"
-											styleClass="text-danger" itemValue="#{a.clientechave}" />
+											var="b" itemLabel="#{b.clientechave.nomecliente}"
+											styleClass="text-danger" itemValue="#{b.clientechave}" />
 									</h:selectOneMenu>
 								</div>
 							</div>
 						</div>
 
-
-
-					  
 						<!-- clientechave -->
 						<div class="row">
 							<div class="col-lg-12 col-md-12">
 								<div class="form-group">
-								<label jsf:for="descricao">Selecione o produto:</label>
+								<label jsf:for="descricaoserv">Selecione o Tipo de atendimento:</label>
 								<br></br>
 									<!--quando o usuario selecionar o funcionario desejado, o valor sera guardado
 									na variavel abaixo a ate.funcionario-->		
 									<h:selectOneMenu value="#{ate.tprod}">
 										<f:selectItems value="#{ate.atendimentosList}" 
-											var="a" itemLabel="#{a.produtochave.descricao}"
-											styleClass="text-danger" itemValue="#{a.produtochave}" />
+											var="c" itemLabel="#{c.servicochave.descricaoserv}"
+											styleClass="text-danger" itemValue="#{c.servicochave}" />
 									</h:selectOneMenu>
 								</div>
 							</div>
@@ -117,12 +114,24 @@
 						<!--  CPF -->
 						<div class="row">
 							<div class="col-lg-4 col-md-4">
-								<div class="form-group #{!horario.valid ? 'has-error' : ''}">
-									<label jsf:for="horario">Horario</label> <input type="text"
-										jsf:id="horario" jsf:binding="#{horario}" class="form-control"
-										placeholder="00:00" jsf:value="#{ate.dto.horario}" />
+								<div class="form-group #{!horarioinicial.valid ? 'has-error' : ''}">
+									<label jsf:for="horarioinicial">horario inicial</label> <input type="text"
+										jsf:id="horario" jsf:binding="#{horarioinicial}" class="form-control"
+										placeholder="00:00" jsf:value="#{ate.dto.horarioinicial}" />
 
-									<h:message for="horario" styleClass="text-danger" />
+									<h:message for="horarioinicial" styleClass="text-danger" />
+								</div>
+							</div>
+						</div>
+						
+							<div class="row">
+							<div class="col-lg-4 col-md-4">
+								<div class="form-group #{!horariofinal.valid ? 'has-error' : ''}">
+									<label jsf:for="horariofinal">horario final</label> <input type="text"
+										jsf:id="horariofinal" jsf:binding="#{horariofinal}" class="form-control"
+										placeholder="00:00" jsf:value="#{ate.dto.horariofinal}" />
+
+									<h:message for="horariofinal" styleClass="text-danger" />
 								</div>
 							</div>
 						</div>

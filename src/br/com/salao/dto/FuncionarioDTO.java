@@ -1,5 +1,12 @@
 package br.com.salao.dto;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import br.com.salao.dao.ClienteDAO;
+import br.com.salao.dao.FuncionarioDAO;
+import br.com.salao.dao.TipoServicoDAO;
+
 public class FuncionarioDTO {
 
 	private int id;
@@ -11,6 +18,24 @@ public class FuncionarioDTO {
 	private String cargo;
 	private String email;
 	private String senha; 
+	
+	public FuncionarioDTO(ResultSet result) {
+		try {
+			this.id = result.getInt("id");
+			this.nome = result.getString("nome");
+			this.endereco = result.getString("endereco");
+			this.cpf = result.getString("cpf");
+			this.telefone = result.getString("telefone");
+			this.sexo = result.getString("sexo");
+			this.cargo = result.getString("cargo");
+			this.email = result.getString("email");
+			this.senha = result.getString("senha");			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
 	/*
 	 * nome, endereco, cpf, telefone, sexo, cargo, email, senha
@@ -103,6 +128,6 @@ public class FuncionarioDTO {
 		this.setSenha(senha);
 		this.setCargo(cargo);
 	}
-	
+
 	
 }

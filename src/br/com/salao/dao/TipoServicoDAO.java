@@ -8,20 +8,20 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.salao.dto.TipoProdutoDTO;
+import br.com.salao.dto.TipoServicoDTO;
 
-public class TipoProdutoDAO {
+public class TipoServicoDAO {
 
-	private static final String tbl_name = "tipoProdutos";
+	private static final String tbl_name = "tiposervico";
 	private static final String sql_insert = "INSERT INTO " + tbl_name
 			+ " ( descricao) VALUES (?)";
-	private static final String sql_update = "UPDATE tipoProdutos SET descricao = ?, WHERE id = ?";
-	private static final String sql_delete = "DELETE FROM tipoProdutos WHERE id = ?";
-	private static final String sql_select = "SELECT * FROM tipoProdutos";
-	private static final String sql_by_id = "SELECT * FROM tipoProdutos WHERE id = ?";
+	private static final String sql_update = "UPDATE tiposervico SET descricaoserv = ?, WHERE id = ?";
+	private static final String sql_delete = "DELETE FROM tiposervico WHERE id = ?";
+	private static final String sql_select = "SELECT * FROM tiposervico";
+	private static final String sql_by_id = "SELECT * FROM tiposervico WHERE id = ?";
 	private Connection conn = null;
 
-	public TipoProdutoDAO() {
+	public TipoServicoDAO() {
 		try {
 			DB db = new DB();
 			conn = db.getConn();
@@ -30,33 +30,33 @@ public class TipoProdutoDAO {
 		}
 	}
 
-	public boolean insert(TipoProdutoDTO dto) throws SQLException {
+	public boolean insert(TipoServicoDTO dto) throws SQLException {
 		PreparedStatement pstm = conn.prepareStatement(sql_insert);
-		pstm.setString(1, dto.getDescricao());
+		pstm.setString(1, dto.getDescricaoserv());
 		return (pstm.executeUpdate() > 0);
 	}
 
-	public boolean update(TipoProdutoDTO dto) throws SQLException {
+	public boolean update(TipoServicoDTO dto) throws SQLException {
 		PreparedStatement pstm = conn.prepareStatement(sql_update);
-		pstm.setString(1, dto.getDescricao());
+		pstm.setString(1, dto.getDescricaoserv());
 		pstm.setInt(2, dto.getId());
 		System.out.println(dto.getId());
 		return (pstm.executeUpdate() > 0);
 	}
 
-	public boolean delete(TipoProdutoDTO dto) throws SQLException {
+	public boolean delete(TipoServicoDTO dto) throws SQLException {
 		PreparedStatement pstm = conn.prepareStatement(sql_delete);
 		pstm.setInt(1, dto.getId());
 		return (pstm.executeUpdate() > 0);
 	}
 
-	public List<TipoProdutoDTO> getAll() throws SQLException {
+	public List<TipoServicoDTO> getAll() throws SQLException {
 		try {
-			List<TipoProdutoDTO> lista = new ArrayList<TipoProdutoDTO>();
+			List<TipoServicoDTO> lista = new ArrayList<TipoServicoDTO>();
 			Statement stm = conn.createStatement();
 			ResultSet rs = stm.executeQuery(sql_select);
 			while (rs.next()) {
-				TipoProdutoDTO dto = new TipoProdutoDTO(rs.getInt("id"), rs.getString("descricao"));
+				TipoServicoDTO dto = new TipoServicoDTO(rs.getInt("id"), rs.getString("descricaoserv"));
 				lista.add(dto);
 			}
 
@@ -67,16 +67,16 @@ public class TipoProdutoDAO {
 		}
 	}
 
-	public TipoProdutoDTO getById(int id) {
+	public TipoServicoDTO getById(int id) {
 		try {
-			TipoProdutoDTO dto = null;
+			TipoServicoDTO dto = null;
 			PreparedStatement pstm = conn.prepareStatement(sql_by_id);
 			pstm.setInt(1, id);
 
 			ResultSet rs = pstm.executeQuery();
 
 			if (rs.first()) {
-				dto = new TipoProdutoDTO(rs.getInt("id"), rs.getString("descricao"));
+				dto = new TipoServicoDTO(rs.getInt("id"), rs.getString("descricaoserv"));
 
 			}
 
@@ -87,7 +87,7 @@ public class TipoProdutoDAO {
 		}
 	}
 
-	public static List<TipoProdutoDTO> getListarTipoProdutos() {
+	public static List<TipoServicoDTO> getListarTipoServicos() {
 		// TODO Auto-generated method stub
 		return null;
 	}
