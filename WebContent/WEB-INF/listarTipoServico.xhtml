@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf" >
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        
+
+        <title>Lista de Tipos de serviço Cadastrados</title>
+
+        <link rel="stylesheet" type="text/css"
+              href="#{request.contextPath}/resources/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <h:outputStylesheet name="css/site.css"/>
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body jsf:id="body">
+        <header>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/">Lista</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
+                    <form jsf:id="form" jsf:prependId="false">
+                        <fieldset>
+                            <legend>Tipos de serviço</legend>
+                            
+<!-- id, nome, email, cpf, sexo, telefone -->
+
+
+<h:dataTable value="#{tp.tiposervico}" var="tiposervico" border="0" style="width:100%;height:30px;border-radius: 3px;">
+
+
+
+<!-- <h:dataTable value="#{tp.tiposervico}" var="tiposervico" styleClass="listagem"  headerClass="header" rowClasses="coluna1, coluna2, coluna3, coluna4, coluna5, coluna6, coluna7">
+ --><h:column>
+	<f:facet name="header">
+		<h:outputText value="Código:"></h:outputText>
+	</f:facet>
+	<h:outputText value="#{tiposervico.id}"></h:outputText>
+</h:column>
+
+<h:column>
+	<f:facet name="header">
+		<h:outputText value="Descrição:"></h:outputText>
+	</f:facet>
+	<h:outputText value="#{tiposervico.descricaoserv}"></h:outputText>
+</h:column>
+
+<h:column>
+	<f:facet name="header">
+		<h:outputText value="Ações"></h:outputText>
+	</f:facet>
+	
+<h:commandLink action="atualizarTipoServico" class="btn btn-primary" actionListener="#{tp.sel}" value="Editar"></h:commandLink>
+	<br></br>
+		<h:commandButton  class="btn btn-primary" value="Inativar" action="#{tp.inativar}"></h:commandButton>
+</h:column>
+</h:dataTable>
+<br></br><br></br>
+<h:commandButton value="Voltar" class="btn btn-primary" action="inserirTipoServico" actionListener="#{tp.insert}"></h:commandButton>
+                          
+            	 </fieldset>
+        	</form>
+    	 </div>
+   	 </div>
+    </div>
+              
+                           
+
+        <h:outputScript name="js/jquery-3.2.1.min.js"/>
+        <h:outputScript name="bootstrap/3.3.7/js/bootstrap.min.js"/>
+        <h:outputScript name="js/jquery.mask.min.js"/>
+        <h:outputScript name="js/jquery.maskMoney.min.js"/>
+        <h:outputScript name="js/jquery.validate.min.js"/>
+        <h:outputScript name="js/additional-methods.min.js"/>
+        <h:outputScript name="js/localization/messages_pt_BR.min.js"/>
+        <h:outputScript name="js/script.js"/>
+      
+    </body>
+</html>   

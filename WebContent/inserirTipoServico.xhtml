@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+
+<head jsf:id="head">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+<title>Cadastro de Tipos de serviço</title>
+
+<link rel="stylesheet" type="text/css"
+	href="#{request.contextPath}/resources/bootstrap/3.3.7/css/bootstrap.min.css" />
+<h:outputStylesheet name="css/stylesheet.css" />
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+<body jsf:id="body">
+	<header>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">Cadastro</a>
+				</div>
+							</div>
+		</nav>
+	</header>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
+				<form jsf:id="form" jsf:prependId="false">
+					<fieldset>
+						<legend>Dados Tipos de serviço</legend>
+
+
+								<!-- dia -->
+						<div class="row">
+							<div class="col-lg-12 col-md-12">
+								<div class="form-group #{!nome.valid ? 'has-error' : ''}">
+									<label jsf:for="nome">Descrição</label> <input type="text"
+										jsf:id="dia" jsf:binding="#{dia}" class="form-control"
+										placeholder="Descrição do tipo de serviço" jsf:value="#{tp.dto.descricaoserv}" />
+									<h:message for="descricaoserv" styleClass="text-danger" />
+
+								</div>
+							</div>
+						</div>
+
+
+					</fieldset>
+
+					<br></br>
+					<h:panelGrid columns="3" cellpadding="5" cellspacing="5">
+
+						<input type="submit" class="btn btn-primary"
+							jsf:action="#{tp.save}" value="Cadastrar" />
+
+
+						<input type="submit" class="btn btn-primary" immediate="true"
+							jsf:action="erro" value="Cancelar" />
+
+						<input type="submit" class="btn btn-primary" immediate="true"
+							jsf:action="listarClientes" value="Editar / Inativar" />
+
+					</h:panelGrid>
+
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<h:outputScript name="js/jquery-3.2.1.min.js" />
+	<h:outputScript name="bootstrap/3.3.7/js/bootstrap.min.js" />
+	<h:outputScript name="js/jquery.mask.min.js" />
+	<h:outputScript name="js/jquery.maskMoney.min.js" />
+	<h:outputScript name="js/jquery.validate.min.js" />
+	<h:outputScript name="js/additional-methods.min.js" />
+	<h:outputScript name="js/localization/messages_pt_BR.min.js" />
+	<h:outputScript name="js/script.js" />
+
+</body>
+</html>
