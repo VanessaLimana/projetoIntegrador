@@ -1,44 +1,67 @@
 package br.com.salao.beans;
 
+
+
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
 import br.com.salao.dao.TipoServicoDAO;
 import br.com.salao.dto.TipoServicoDTO;
+import br.com.salao.dto.AtendimentoDTO;
+import br.com.salao.dto.ClienteDTO;
+import br.com.salao.dto.TipoServicoDTO;
 
-@ManagedBean(name="tiposerv")
-@SessionScoped
+@ManagedBean(name="tp")
+@ViewScoped
 public class TipoServicoBean {
 
-	private TipoServicoDTO dto = new TipoServicoDTO();
-	private TipoServicoDAO dao;
+	private TipoServicoDTO tipoServicoDto = new TipoServicoDTO();
+	private TipoServicoDAO tipoServicoDao;
 	private DataModel<TipoServicoDTO> tipoServicos;
+	private TipoServicoDTO tprod;
 	
-	public TipoServicoDTO getDto(){
-		return this.dto;
+
+	@PostConstruct
+	public void init() {
+		this.tipoServicoDao = new TipoServicoDAO();
+	}
+	 
+
+	public List<TipoServicoDTO> getTipoServicosList() {
+		List<TipoServicoDTO> test = this.tipoServicoDao.findAll(); 
+		System.out.println(test);
+		return this.tipoServicoDao.findAll();
 	}
 	
+	
+	
+	public TipoServicoDTO getDto(){
+		return this.tipoServicoDto;
+	}
+	//tomcat ta meio bugado...
 	public void setDto(TipoServicoDTO dto){
-		this.dto = dto;
+		this.tipoServicoDto = dto;
 	}
 	
 	public void sel(){
-		dto = tipoServicos.getRowData();
+		tipoServicoDto = tipoServicos.getRowData();
 	}
 	
 	public String update() throws SQLException, ClassNotFoundException{
 		String retorno = "erro";
 		
-		dao = new TipoServicoDAO();
+		tipoServicoDao = new TipoServicoDAO();
 		
-		if(dao.update(dto)){
-			retorno = "listarTipoServico";
+		if(tipoServicoDao.update(tipoServicoDto)){
+			retorno = "listar";
 		}
 		
 		return retorno;
@@ -47,24 +70,24 @@ public class TipoServicoBean {
 	public String apagar() throws SQLException, ClassNotFoundException{
 		String retorno = "erro";
 		
-		dao = new TipoServicoDAO();
-		if(dao.delete(dto)){
-			retorno = "listarTipoServico";
+		tipoServicoDao = new TipoServicoDAO();
+		if(tipoServicoDao.delete(tipoServicoDto)){
+			retorno = "listar";
 		}
 		
 		return retorno;
 	}
 	
 	public void insert(){
-		dto = new TipoServicoDTO();
+		tipoServicoDto = new TipoServicoDTO();
 	}
 	
 	public String save() throws SQLException, ClassNotFoundException{
 		String retorno = "erro";
 		
-		dao = new TipoServicoDAO();
+		tipoServicoDao = new TipoServicoDAO();
 		
-		if(dao.insert(dto)){
+		if(tipoServicoDao.insert(tipoServicoDto)){
 			retorno = "listarTipoServico";
 		}
 		
@@ -72,8 +95,8 @@ public class TipoServicoBean {
 	}
 	
 	public DataModel<TipoServicoDTO> getTipoServicos() throws SQLException, ClassNotFoundException{
-		dao = new TipoServicoDAO();
-		List<TipoServicoDTO> lista = dao.getAll();
+		tipoServicoDao = new TipoServicoDAO();
+		List<TipoServicoDTO> lista = tipoServicoDao.findAll();
 		tipoServicos = new ListDataModel<TipoServicoDTO>(lista);
 		return tipoServicos;
 	}
@@ -81,4 +104,15 @@ public class TipoServicoBean {
 	public void setTipoServicos(DataModel<TipoServicoDTO> tipoServicos){
 		this.tipoServicos = tipoServicos;
 	}
+
+	
+	public TipoServicoDTO getTprod() {
+		return tprod;
+	}
+
+	public void setTipoServico(TipoServicoDTO tprod) {
+		System.out.println("Tipo Servico selecionado..." + tprod.getDescricaoserv());
+		this.tprod = tprod;
+	}
+
 }

@@ -14,7 +14,9 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
 import br.com.salao.dao.AtendimentoDAO;
+import br.com.salao.dao.ClienteDAO;
 import br.com.salao.dao.FuncionarioDAO;
+import br.com.salao.dao.TipoServicoDAO;
 import br.com.salao.dto.AtendimentoDTO;
 import br.com.salao.dto.ClienteDTO;
 import br.com.salao.dto.FuncionarioDTO;
@@ -31,20 +33,35 @@ public class AtendimentoBean {
 	private ClienteDTO client;
 	private TipoServicoDTO tprod;
 	private FuncionarioDAO funcionarioDao;
-
+	private ClienteDAO clienteDao;
+	private TipoServicoDAO tipoServicoDao; 
 
 	
-	//Ao anotar com postconstruct basicamente manda o jsf executar esse metodo apos instanciar esse bean
 	@PostConstruct
 	public void init() {
 		this.atendimentoDao = new AtendimentoDAO();
 		this.funcionarioDao = new FuncionarioDAO();
+		this.clienteDao = new ClienteDAO();
+		this.tipoServicoDao = new TipoServicoDAO();
+		
 	}
 
 	public List<FuncionarioDTO> getFuncionariosList() {
 		List<FuncionarioDTO> test = this.funcionarioDao.findAll(); 
 		System.out.println(test);
 		return this.funcionarioDao.findAll();
+	}
+	
+	public List<ClienteDTO> getClientesList() {
+		List<ClienteDTO> test = this.clienteDao.findAll(); 
+		System.out.println(test);
+		return this.clienteDao.findAll();
+	}
+	
+	public List<TipoServicoDTO> getTipoServicosList() {
+		List<TipoServicoDTO> test = this.tipoServicoDao.findAll(); 
+		System.out.println(test);
+		return this.tipoServicoDao.findAll();
 	}
 	
 	public List<AtendimentoDTO> getAtendimentosList() {
@@ -55,7 +72,6 @@ public class AtendimentoBean {
 	public AtendimentoDTO getDto(){
 		return this.atendimentoDto;
 	}
-	//tomcat ta meio bugado...
 	public void setDto(AtendimentoDTO dto){
 		this.atendimentoDto = dto;
 	}
@@ -113,9 +129,6 @@ public class AtendimentoBean {
 	public void setAtendimentos(DataModel<AtendimentoDTO> atendimentos){
 		this.atendimentos = atendimentos;
 	}
-
-	//essa propriedade abaixo vai ter o funcionario selecionado pelo usuario...
-	//ai quando ele clicar em insert....é essa propriedade que voce vai salvar no banco..
 	
 	public FuncionarioDTO getFunctionario() {
 		return functionario;

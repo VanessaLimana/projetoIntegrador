@@ -60,41 +60,39 @@
 							</div>
 						</div>
 						
-						
 						<!-- clientechave -->
-						<div class="row">
+							<div class="row">
 							<div class="col-lg-12 col-md-12">
 								<div class="form-group">
-								<label jsf:for="nomecliente">Selecione o nome do cliente:</label>
+								<label jsf:for="nomecliente">Selecione um Cliente:</label>
 								<br></br>
 									<!--quando o usuario selecionar o funcionario desejado, o valor sera guardado
 									na variavel abaixo a ate.funcionario-->		
 									<h:selectOneMenu value="#{ate.client}">
-										<f:selectItems value="#{ate.atendimentosList}" 
-											var="b" itemLabel="#{b.clientechave.nomecliente}"
-											styleClass="text-danger" itemValue="#{b.clientechave}" />
+										<f:selectItems value="#{ate.clientesList}" 
+											var="a" itemLabel="#{a.nomecliente}"
+											styleClass="text-danger" itemValue="#{a}" />
 									</h:selectOneMenu>
 								</div>
 							</div>
 						</div>
+						
 
-						<!-- clientechave -->
-						<div class="row">
+
+						<!-- tiposervico -->
+							<div class="row">
 							<div class="col-lg-12 col-md-12">
-								<div class="form-group">
-								<label jsf:for="descricaoserv">Selecione o Tipo de atendimento:</label>
-								<br></br>
-									<!--quando o usuario selecionar o funcionario desejado, o valor sera guardado
-									na variavel abaixo a ate.funcionario-->		
+								<div class="form-group" >
+								<label jsf:for="descricaoserv">Selecione um tipo de atedimento:</label>
+								<br></br>	
 									<h:selectOneMenu value="#{ate.tprod}">
-										<f:selectItems value="#{ate.atendimentosList}" 
-											var="c" itemLabel="#{c.servicochave.descricaoserv}"
-											styleClass="text-danger" itemValue="#{c.servicochave}" />
+										<f:selectItems value="#{ate.tipoServicosList}" 
+											var="a" itemLabel="#{a.descricaoserv}"
+											styleClass="text-danger" itemValue="#{a}" />
 									</h:selectOneMenu>
 								</div>
 							</div>
-						</div> 
-
+						</div>
 
 
 

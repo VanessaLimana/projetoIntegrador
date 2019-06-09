@@ -35,67 +35,8 @@ public class AtendimentoDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		//vamos antes precisar testar se os dados estao vindo do banco...voce ja conseguiu trazer
-		//algo do banco?
-		//sim boa das outras tabelas, tem cadastro, e lista mas nessa ainda nao funciona
 	}
-	/*
-	 * id, funcionariochave, clientechave, tiposervicochave, produtochave, dia, horario,
-	 * observacao
-	 */	
 	
-	/*
-	 * public List<FuncionarioDTO> getBuscarFuncionarios() {
-	 * 
-	 * try { List<FuncionarioDTO> funcionarios = new ArrayList<FuncionarioDTO>();
-	 * PreparedStatement stmt = ((Connection) this.connection)
-	 * .prepareStatement("select p.nome, p.id from funcionarios f " +
-	 * "inner join atendimentos p on p.id=f.id");
-	 * 
-	 * ResultSet rs = stmt.executeQuery();
-	 * 
-	 * while (rs.next()) {
-	 * 
-	 * FuncionarioDTO funcionarioDTO = new FuncionarioDTO();
-	 * 
-	 * funcionarioDTO.setNome(rs.getString("nome"));
-	 * funcionarioDTO.setId(rs.getInt("id"));
-	 * 
-	 * funcionarios.add(funcionarioDTO); }
-	 */
-	/*
-	 * rs.close(); stmt.close();
-	 * System.out.println("Fechando a conexão com o banco"); return funcionarios; }
-	 * catch (SQLException e) { throw new RuntimeException(e); } }
-	 */
-	
-/*	public class ControleFuncionario {
-		FuncionarioDTO funcionarioDto = new FuncionarioDTO();
-		FuncionarioDTO cidadeDAO = new FuncionarioDTO();
-
-		public List<FuncionarioDTO> getFuncionarios() throws SQLException{
-		    List<FuncionarioDTO> funcionarios = FuncionarioDAO.getListarFuncionarios();
-		    return funcionarios;
-		}
-	*/
-	
-	/*
-	 * public boolean insert(AtendimentoDTO dto) throws SQLException{ //aqui acho q
-	 * ta errado //entao, voce ja fez a view onde o usuario vai adicionar os
-	 * valores? //aqu chamaria as estrangeiras para inserir ... eu acho n sei
-	 * 
-	 * //o projeto ja roda? pra eu ver
-	 * 
-	 * //sim, so vou arrumar pera ae ta PreparedStatement pstm =
-	 * conn.prepareStatement(sql_insert); pstm.setInt(1,
-	 * dto.getFuncionariochave().getId()); pstm.setInt(2,
-	 * dto.getClientechave().getId()); pstm.setString(3, dto.getTiposervicochave());
-	 * pstm.setString(4, dto.getProdutochave()); pstm.setString(5, dto.getDia());
-	 * pstm.setString(6, dto.getHorario()); pstm.setString(7, dto.getObservacao());
-	 * 
-	 * return (pstm.executeUpdate() > 0); }
-	 */
 	
 	public AtendimentoDTO findById(int id) {
 		String sql = "SELECT * FROM atendimentos WHERE id = ?";
@@ -157,9 +98,6 @@ public class AtendimentoDAO {
 			Statement stm = conn.createStatement();
 			ResultSet rs = stm.executeQuery(sql_select);
 			
-			//o resultset nunca vai retornar um objeto funcionario, ele apenas retorna o id dele....não funciona como o hibernate
-			//sempre que usar um get do resultset, pense que ele sempre vai retornar um primitivo, nunca um objeto, ainda mais customizado 
-		    //que é o caso do funcionario
 			
 			while(rs.next()){
 				AtendimentoDTO dto = new AtendimentoDTO(rs);			
@@ -167,10 +105,6 @@ public class AtendimentoDAO {
 			}			
 			
 	
-			/*
-			 * id, funcionariochave, clientechave, tiposervicochave, produtochave, dia, horario,
-			 * observacao
-			 */	
 			return lista;
 		} catch(SQLException ex) {
 			

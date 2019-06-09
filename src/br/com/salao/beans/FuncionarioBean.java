@@ -27,8 +27,10 @@ public class FuncionarioBean {
 	private FuncionarioDAO funcionarioDao;
 	private DataModel<FuncionarioDTO> funcionarios;
 	private FuncionarioDTO functionario;
-	private ClienteDTO client;
-	private TipoServicoDTO tprod;
+	
+	/*
+										 * private ClienteDTO client; private TipoServicoDTO tprod;
+										 */
 
 
 	
@@ -109,8 +111,6 @@ public class FuncionarioBean {
 		this.funcionarios = funcionarios;
 	}
 
-	//essa propriedade abaixo vai ter o funcionario selecionado pelo usuario...
-	//ai quando ele clicar em insert....é essa propriedade que voce vai salvar no banco..
 	
 	public FuncionarioDTO getFunctionario() {
 		return functionario;
@@ -120,23 +120,5 @@ public class FuncionarioBean {
 		System.out.println("Funcionario selecionado..." + functionario.getNome());
 		this.functionario = functionario;
 	}
-	
-	public ClienteDTO getClient() {
-		return client;
-	}
 
-	public void setClient(ClienteDTO client) {
-		System.out.println("Cliente selecionado..." + client.getNomecliente());
-		this.client = client;
-	}
-
-	public TipoServicoDTO getTprod() {
-		return tprod;
-	}
-
-	public void setTprod(TipoServicoDTO tprod) {
-		System.out.println("Serviço selecionado..." + tprod.getDescricaoserv());
-		this.tprod = tprod;
-	}
-	
 }

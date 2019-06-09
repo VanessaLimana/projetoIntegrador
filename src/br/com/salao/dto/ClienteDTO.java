@@ -1,5 +1,8 @@
 package br.com.salao.dto;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class ClienteDTO {
 
 	private int id;
@@ -10,7 +13,24 @@ public class ClienteDTO {
 	private String sexo;
 	private String status;
 
-	
+	public ClienteDTO(ResultSet result) {
+		
+		try {
+			this.id = result.getInt("id");
+			this.nomecliente = result.getString("nomecliente");
+			this.email = result.getString("email");
+			this.cpf = result.getString("cpf");
+			this.telefone = result.getString("telefone");
+			this.sexo = result.getString("sexo");
+			this.status = result.getString("status");
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
 	public int getId() {
 		return id;
 	}

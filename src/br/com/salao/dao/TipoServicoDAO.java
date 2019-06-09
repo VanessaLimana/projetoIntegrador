@@ -9,64 +9,99 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.salao.dto.TipoServicoDTO;
+import br.com.salao.dto.TipoServicoDTO;
 
 public class TipoServicoDAO {
 
 	private static final String tbl_name = "tiposervico";
 	private static final String sql_insert = "INSERT INTO " + tbl_name
-			+ " ( descricao) VALUES (?)";
+			+ " (descricaoserv) VALUES (?)";
 	private static final String sql_update = "UPDATE tiposervico SET descricaoserv = ?, WHERE id = ?";
 	private static final String sql_delete = "DELETE FROM tiposervico WHERE id = ?";
 	private static final String sql_select = "SELECT * FROM tiposervico";
 	private static final String sql_by_id = "SELECT * FROM tiposervico WHERE id = ?";
+	
 	private Connection conn = null;
+	private Object connection;
 
-	public TipoServicoDAO() {
+	public TipoServicoDAO() {		
 		try {
 			DB db = new DB();
 			conn = db.getConn();
-		} catch(Exception ex) {
-			ex.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		
+	}
+	
+	public List<TipoServicoDTO> findAll() {
+		String sql = "SELECT * FROM tipoServico ";
+		
+		List<TipoServicoDTO> tipoServicos = new ArrayList<TipoServicoDTO>();
+		
+		try {
+			PreparedStatement preparedStatement = this.conn.prepareStatement(sql);
+			ResultSet result = preparedStatement.executeQuery();
+			
+			while(result.next()) {
+				tipoServicos.add(new TipoServicoDTO(result));
+			}
+
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+			return null;
+		}
+		
+		return tipoServicos;
+	}
+	
+	public TipoServicoDTO findById(int id) {
+		String sql = "SELECT * FROM tipoServico WHERE id = ?";
+
+		try {
+			PreparedStatement preparedStatement = this.conn.prepareStatement(sql);
+			preparedStatement.setInt(1, id);
+			
+			ResultSet result = preparedStatement.executeQuery();
+			result.next();
+			TipoServicoDTO tipoServicoDTO = new TipoServicoDTO(result);
+			
+			return tipoServicoDTO;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		
 	}
 
-	public boolean insert(TipoServicoDTO dto) throws SQLException {
+	/*
+	 * public TipoServicoDTO(int id, String nome, String endereco, String email,
+	 * String cpf, String sexo, String senha,String telefone, String cargo){
+	 */
+	public boolean insert(TipoServicoDTO dto) throws SQLException{
+		
 		PreparedStatement pstm = conn.prepareStatement(sql_insert);
 		pstm.setString(1, dto.getDescricaoserv());
+
+
 		return (pstm.executeUpdate() > 0);
 	}
-
-	public boolean update(TipoServicoDTO dto) throws SQLException {
+	public boolean update(TipoServicoDTO dto) throws SQLException{
 		PreparedStatement pstm = conn.prepareStatement(sql_update);
-		pstm.setString(1, dto.getDescricaoserv());
-		pstm.setInt(2, dto.getId());
+
 		System.out.println(dto.getId());
 		return (pstm.executeUpdate() > 0);
 	}
-
-	public boolean delete(TipoServicoDTO dto) throws SQLException {
+	
+	public boolean delete(TipoServicoDTO dto) throws SQLException{
 		PreparedStatement pstm = conn.prepareStatement(sql_delete);
 		pstm.setInt(1, dto.getId());
 		return (pstm.executeUpdate() > 0);
 	}
-
-	public List<TipoServicoDTO> getAll() throws SQLException {
-		try {
-			List<TipoServicoDTO> lista = new ArrayList<TipoServicoDTO>();
-			Statement stm = conn.createStatement();
-			ResultSet rs = stm.executeQuery(sql_select);
-			while (rs.next()) {
-				TipoServicoDTO dto = new TipoServicoDTO(rs.getInt("id"), rs.getString("descricaoserv"));
-				lista.add(dto);
-			}
-
-			return lista;
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			return null;
-		}
-	}
-
+	
 	public TipoServicoDTO getById(int id) {
 		try {
 			TipoServicoDTO dto = null;
@@ -91,4 +126,5 @@ public class TipoServicoDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 }

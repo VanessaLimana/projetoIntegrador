@@ -1,46 +1,67 @@
 package br.com.salao.beans;
 
+
+
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
 import br.com.salao.dao.ClienteDAO;
-import br.com.salao.dao.ClienteDAO;
 import br.com.salao.dto.ClienteDTO;
+import br.com.salao.dto.AtendimentoDTO;
 import br.com.salao.dto.ClienteDTO;
+import br.com.salao.dto.TipoServicoDTO;
 
-@ManagedBean(name="cli")
-@SessionScoped
+@ManagedBean(name="fun")
+@ViewScoped
 public class ClienteBean {
 
-	private ClienteDTO dto = new ClienteDTO();
-	private ClienteDAO dao;
+	private ClienteDTO clienteDto = new ClienteDTO();
+	private ClienteDAO clienteDao;
 	private DataModel<ClienteDTO> clientes;
+	private ClienteDTO client;
 	
-	public ClienteDTO getDto(){
-		return this.dto;
+
+	@PostConstruct
+	public void init() {
+		this.clienteDao = new ClienteDAO();
+	}
+	 
+
+	public List<ClienteDTO> getClientesList() {
+		List<ClienteDTO> test = this.clienteDao.findAll(); 
+		System.out.println(test);
+		return this.clienteDao.findAll();
 	}
 	
+	
+	
+	public ClienteDTO getDto(){
+		return this.clienteDto;
+	}
+
 	public void setDto(ClienteDTO dto){
-		this.dto = dto;
+		this.clienteDto = dto;
 	}
 	
 	public void sel(){
-		dto = clientes.getRowData();
+		clienteDto = clientes.getRowData();
 	}
 	
 	public String update() throws SQLException, ClassNotFoundException{
 		String retorno = "erro";
 		
-		dao = new ClienteDAO();
+		clienteDao = new ClienteDAO();
 		
-		if(dao.update(dto)){
-			retorno = "listarCliente";
+		if(clienteDao.update(clienteDto)){
+			retorno = "listar";
 		}
 		
 		return retorno;
@@ -49,24 +70,24 @@ public class ClienteBean {
 	public String apagar() throws SQLException, ClassNotFoundException{
 		String retorno = "erro";
 		
-		dao = new ClienteDAO();
-		if(dao.update2(dto)){
-			retorno = "listarCliente";
+		clienteDao = new ClienteDAO();
+		if(clienteDao.delete(clienteDto)){
+			retorno = "listar";
 		}
 		
 		return retorno;
 	}
 	
 	public void insert(){
-		dto = new ClienteDTO();
+		clienteDto = new ClienteDTO();
 	}
 	
 	public String save() throws SQLException, ClassNotFoundException{
 		String retorno = "erro";
 		
-		dao = new ClienteDAO();
+		clienteDao = new ClienteDAO();
 		
-		if(dao.insert(dto)){
+		if(clienteDao.insert(clienteDto)){
 			retorno = "listarCliente";
 		}
 		
@@ -74,8 +95,8 @@ public class ClienteBean {
 	}
 	
 	public DataModel<ClienteDTO> getClientes() throws SQLException, ClassNotFoundException{
-		dao = new ClienteDAO();
-		List<ClienteDTO> lista = dao.getAll();
+		clienteDao = new ClienteDAO();
+		List<ClienteDTO> lista = clienteDao.findAll();
 		clientes = new ListDataModel<ClienteDTO>(lista);
 		return clientes;
 	}
@@ -83,5 +104,15 @@ public class ClienteBean {
 	public void setClientes(DataModel<ClienteDTO> clientes){
 		this.clientes = clientes;
 	}
-}
 
+	
+	public ClienteDTO getFunctionario() {
+		return client;
+	}
+
+	public void setFunctionario(ClienteDTO client) {
+		System.out.println("Cliente selecionado..." + client.getNomecliente());
+		this.client = client;
+	}
+
+}

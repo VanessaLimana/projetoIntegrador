@@ -3,9 +3,6 @@ package br.com.salao.dto;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import br.com.salao.dao.ClienteDAO;
-import br.com.salao.dao.FuncionarioDAO;
-import br.com.salao.dao.TipoServicoDAO;
 
 public class FuncionarioDTO {
 

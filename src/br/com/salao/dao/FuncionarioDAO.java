@@ -15,7 +15,7 @@ import br.com.salao.dto.FuncionarioDTO;
 
 public class FuncionarioDAO {
 
-	private static final String tbl_name = "funcionarios";//aqui 
+	private static final String tbl_name = "funcionarios"; 
 	private static final String sql_insert = "INSERT INTO " 
 			+ tbl_name + " (funcionariochave, clientechave, tiposervicochave, produtochave, dia, horario, observacao ) VALUES (?, ?, ?, ?, ?, ?, ?)";
 	private static final String sql_update = "UPDATE funcionarios SET funcionariochave = ?, clientechave = ?, tiposervicochave = ?, produtochave = ? dia = ? horario = ? observacao = ? WHERE id = ?";
@@ -36,66 +36,7 @@ public class FuncionarioDAO {
 			e.printStackTrace();
 		}
 		
-		//vamos antes precisar testar se os dados estao vindo do banco...voce ja conseguiu trazer
-		//algo do banco?
-		//sim boa das outras tabelas, tem cadastro, e lista mas nessa ainda nao funciona
 	}
-	/*
-	 * id, funcionariochave, clientechave, tiposervicochave, produtochave, dia, horario,
-	 * observacao
-	 */	
-	
-	/*
-	 * public List<FuncionarioDTO> getBuscarFuncionarios() {
-	 * 
-	 * try { List<FuncionarioDTO> funcionarios = new ArrayList<FuncionarioDTO>();
-	 * PreparedStatement stmt = ((Connection) this.connection)
-	 * .prepareStatement("select p.nome, p.id from funcionarios f " +
-	 * "inner join funcionarios p on p.id=f.id");
-	 * 
-	 * ResultSet rs = stmt.executeQuery();
-	 * 
-	 * while (rs.next()) {
-	 * 
-	 * FuncionarioDTO funcionarioDTO = new FuncionarioDTO();
-	 * 
-	 * funcionarioDTO.setNome(rs.getString("nome"));
-	 * funcionarioDTO.setId(rs.getInt("id"));
-	 * 
-	 * funcionarios.add(funcionarioDTO); }
-	 */
-	/*
-	 * rs.close(); stmt.close();
-	 * System.out.println("Fechando a conexão com o banco"); return funcionarios; }
-	 * catch (SQLException e) { throw new RuntimeException(e); } }
-	 */
-	
-/*	public class ControleFuncionario {
-		FuncionarioDTO funcionarioDto = new FuncionarioDTO();
-		FuncionarioDTO cidadeDAO = new FuncionarioDTO();
-
-		public List<FuncionarioDTO> getFuncionarios() throws SQLException{
-		    List<FuncionarioDTO> funcionarios = FuncionarioDAO.getListarFuncionarios();
-		    return funcionarios;
-		}
-	*/
-	
-	/*
-	 * public boolean insert(FuncionarioDTO dto) throws SQLException{ //aqui acho q
-	 * ta errado //entao, voce ja fez a view onde o usuario vai adicionar os
-	 * valores? //aqu chamaria as estrangeiras para inserir ... eu acho n sei
-	 * 
-	 * //o projeto ja roda? pra eu ver
-	 * 
-	 * //sim, so vou arrumar pera ae ta PreparedStatement pstm =
-	 * conn.prepareStatement(sql_insert); pstm.setInt(1,
-	 * dto.getFuncionariochave().getId()); pstm.setInt(2,
-	 * dto.getClientechave().getId()); pstm.setString(3, dto.getTiposervicochave());
-	 * pstm.setString(4, dto.getProdutochave()); pstm.setString(5, dto.getDia());
-	 * pstm.setString(6, dto.getHorario()); pstm.setString(7, dto.getObservacao());
-	 * 
-	 * return (pstm.executeUpdate() > 0); }
-	 */
 	
 	public List<FuncionarioDTO> findAll() {
 		String sql = "SELECT * FROM funcionarios ";
