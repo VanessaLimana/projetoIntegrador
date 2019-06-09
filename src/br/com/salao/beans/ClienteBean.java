@@ -19,7 +19,7 @@ import br.com.salao.dto.AtendimentoDTO;
 import br.com.salao.dto.ClienteDTO;
 import br.com.salao.dto.TipoServicoDTO;
 
-@ManagedBean(name="fun")
+@ManagedBean(name="cli")
 @ViewScoped
 public class ClienteBean {
 
@@ -88,7 +88,7 @@ public class ClienteBean {
 		clienteDao = new ClienteDAO();
 		
 		if(clienteDao.insert(clienteDto)){
-			retorno = "listarCliente";
+			retorno = "listarClientes";
 		}
 		
 		return retorno;

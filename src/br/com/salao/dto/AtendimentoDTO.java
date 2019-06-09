@@ -48,7 +48,7 @@ public class AtendimentoDTO {
 		this.tiposervicochave = tiposervicochave;
 		this.dia = dia; 
 		this.horarioinicial = horarioinicial;
-		this.setHorariofinal(horariofinal); 
+		this.horariofinal = horariofinal; 
 		this.observacao = observacao; 
 
 	}	

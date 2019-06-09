@@ -17,8 +17,8 @@ public class AtendimentoDAO {
 
 	private static final String tbl_name = "atendimentos";//aqui 
 	private static final String sql_insert = "INSERT INTO " 
-			+ tbl_name + " (funcionariochave, clientechave, tiposervicochave, produtochave, dia, horario, observacao ) VALUES (?, ?, ?, ?, ?, ?, ?)";
-	private static final String sql_update = "UPDATE atendimentos SET funcionariochave = ?, clientechave = ?, tiposervicochave = ?, produtochave = ? dia = ? horario = ? observacao = ? WHERE id = ?";
+			+ tbl_name + " (funcionariochave, clientechave, tiposervicochave, dia, horarioinicial, horariofinal, observacao ) VALUES (?, ?, ?, ?, ?, ?, ?)";
+	private static final String sql_update = "UPDATE atendimentos SET nome = ?, nomecliente = ?, desccricaoserv = ?, dia = ? horarioinicial = ? horariofinal = ? observacao = ? WHERE id = ?";
 	private static final String sql_delete = "DELETE FROM atendimentos WHERE id = ?";
 	private static final String sql_select = "SELECT * FROM atendimentos";
 	private static final String sql_by_id = "SELECT * FROM atendimentos WHERE id = ?";

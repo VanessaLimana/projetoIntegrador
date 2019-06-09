@@ -46,7 +46,7 @@
                             <legend>Dados Cliente</legend>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12">
-                                    <div class="form-group #{!nome.valid ? 'has-error' : ''}">
+                                    <div class="form-group #{!nomecliente.valid ? 'has-error' : ''}">
                                         <label jsf:for="nomecliente">Nome</label>
                                         <input type="text"
                                                jsf:id="nomecliente"
@@ -127,13 +127,31 @@
                                                jsf:binding="#{telefone}"
                                                class="form-control"
                                                placeholder="telefone"
-                                               jsf:value="#{cli.dto.telefone}"/>
-                                               
-                                               
+                                               jsf:value="#{cli.dto.telefone}"/>                                      
                                             <h:message for="telefone" styleClass="text-danger"/>
-                                    </div>
+                                    	</div>
                                     </div>
                             </div>
+                            
+                                                       
+                            							<!-- Status -->                   
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="form-group #{!status.valid ? 'has-error' : ''}">
+                                        <label jsf:for="status">Status</label>
+                                        <input type="text"
+                                               jsf:id="status"
+                                               jsf:binding="#{status}"
+                                               class="form-control"
+                                               placeholder="status"
+                                               jsf:value="#{cli.dto.status}"/>
+
+                                        <h:message for="status" styleClass="text-danger"/>
+                                       
+                                    </div>
+                                </div>
+                            </div>   
+                            
        
                        </fieldset>  
                  

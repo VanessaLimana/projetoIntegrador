@@ -45,9 +45,6 @@ public class FuncionarioDTO {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	
-
 
 	public String getNome() {
 		return nome;
@@ -120,10 +117,11 @@ public class FuncionarioDTO {
 		this.setNome(nome);
 		this.setEmail(email);
 		this.setCpf(cpf);
-		this.setTelefone(telefone);
 		this.setSexo(sexo); 
 		this.setSenha(senha);
 		this.setCargo(cargo);
+		this.setTelefone(telefone);
+
 	}
 
 	

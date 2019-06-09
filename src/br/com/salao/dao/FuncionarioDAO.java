@@ -17,8 +17,8 @@ public class FuncionarioDAO {
 
 	private static final String tbl_name = "funcionarios"; 
 	private static final String sql_insert = "INSERT INTO " 
-			+ tbl_name + " (funcionariochave, clientechave, tiposervicochave, produtochave, dia, horario, observacao ) VALUES (?, ?, ?, ?, ?, ?, ?)";
-	private static final String sql_update = "UPDATE funcionarios SET funcionariochave = ?, clientechave = ?, tiposervicochave = ?, produtochave = ? dia = ? horario = ? observacao = ? WHERE id = ?";
+			+ tbl_name + " (nome, endereco, cpf, telefone, sexo, cargo, email, senha) VALUES (?,?,?,?,?,?,?,?)";
+	private static final String sql_update = "UPDATE funcionarios SET nome = ?, endereco = ?, cpf = ?, telefone = ?, sexo = ?, cargo = ?, email = ?, senha = ? WHERE id = ?";
 	private static final String sql_delete = "DELETE FROM funcionarios WHERE id = ?";
 	private static final String sql_select = "SELECT * FROM funcionarios";
 	private static final String sql_by_id = "SELECT * FROM funcionarios WHERE id = ?";
