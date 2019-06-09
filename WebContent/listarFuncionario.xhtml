@@ -14,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         
 
-        <title>Cadastro de Funcionarios</title>
+        <title>Lista de Funcionarios Cadastrados</title>
 
         <link rel="stylesheet" type="text/css"
               href="#{request.contextPath}/resources/bootstrap/3.3.7/css/bootstrap.min.css"/>
@@ -29,7 +29,7 @@
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="/">Cadastro</a>
+                        <a class="navbar-brand" href="/">Lista</a>
                     </div>
                 </div>
             </nav>
@@ -42,95 +42,90 @@
                         <fieldset>
                             <legend>Dados Funcionario</legend>
                             
-<!-- id, nome, endereco, cpf, telefone, sexo, cargo, email, senha
- -->
+<!-- id, nome, email, cpf, sexo, telefone -->
 
-<!-- <h:dataTable value="#{fun.funcionarios}" var="funcionario" styleClass="listagem" headerClass="header" rowClasses="coluna1, coluna2, coluna3, coluna4, coluna5, coluna6, coluna7, coluna8">
- -->
-     <h:dataTable value="#{fun.funcionarios}" var="funcionario" border="1">
- 
-<h:column >
-	<f:facet name="header" >
-		<h:outputText value="Código" ></h:outputText>
+
+<h:dataTable value="#{fun.funcionarios}" var="funcionario" border="0" style="width:100%;height:300px;border-radius: 3px;">
+
+
+
+<!-- <h:dataTable value="#{fun.funcionarios}" var="funcionario" styleClass="listagem"  headerClass="header" rowClasses="coluna1, coluna2, coluna3, coluna4, coluna5, coluna6, coluna7">
+ --><h:column>
+	<f:facet name="header">
+		<h:outputText value="Código:"></h:outputText>
 	</f:facet>
 	<h:outputText value="#{funcionario.id}"></h:outputText>
 </h:column>
 
 <h:column>
 	<f:facet name="header">
-		<h:outputText value="Nome"></h:outputText>
+		<h:outputText value="Nome:"></h:outputText>
 	</f:facet>
 	<h:outputText value="#{funcionario.nome}"></h:outputText>
 </h:column>
 
-<!-- endereco -->
+<!-- email -->
 <h:column>
 	<f:facet name="header">
-		<h:outputText value="endereco"></h:outputText>
+		<h:outputText value="E-mail:"></h:outputText>
 	</f:facet>
-	<h:outputText value="#{funcionario.endereco}"></h:outputText>
+	<h:outputText value="#{funcionario.cpf}"></h:outputText>
 </h:column>
 
 <!-- cpf -->
 <h:column>
 	<f:facet name="header">
-		<h:outputText value="cpf"></h:outputText>
+		<h:outputText value="CPF:"></h:outputText>
 	</f:facet>
-	<h:outputText value="#{funcionario.cpf}"></h:outputText>
+	<h:outputText value="#{funcionario.email}"></h:outputText>
 </h:column>
 
 <!-- sexo -->
 <h:column>
 	<f:facet name="header">
-		<h:outputText value="telefone"></h:outputText>
+		<h:outputText value="Sexo:"></h:outputText>
 	</f:facet>
-	<h:outputText value="#{funcionario.telefone}"></h:outputText>
+	<h:outputText value="#{funcionario.sexo}"></h:outputText>
 </h:column>
 
 <!-- telefone -->
 
 <h:column>
 	<f:facet name="header">
-		<h:outputText value="sexo"></h:outputText>
+		<h:outputText value="Telefone:"></h:outputText>
 	</f:facet>
-	<h:outputText value="#{funcionario.sexo}"></h:outputText>
+	<h:outputText value="#{funcionario.telefone}"></h:outputText>
 </h:column>
 
 
 <h:column>
 	<f:facet name="header">
-		<h:outputText value="cargo"></h:outputText>
+		<h:outputText value="Status:"></h:outputText>
 	</f:facet>
 	<h:outputText value="#{funcionario.cargo}"></h:outputText>
 </h:column>
 
-<h:column>
-	<f:facet name="header">
-		<h:outputText value="email"></h:outputText>
-	</f:facet>
-	<h:outputText value="#{funcionario.email}"></h:outputText>
-</h:column>
 
 <h:column>
 	<f:facet name="header">
-		<h:outputText value="senha"></h:outputText>
+		<h:outputText value="Status:"></h:outputText>
 	</f:facet>
-	<h:outputText value="#{funcionario.email}" disable="true"></h:outputText>
+	<h:outputText value="#{funcionario.endereco}"></h:outputText>
 </h:column>
-
+endereco
 <h:column>
 	<f:facet name="header">
 		<h:outputText value="Ações"></h:outputText>
 	</f:facet>
 	
-
-	<h:commandLink action="atualizar" actionListener="#{fun.sel}" value="EDITAR"></h:commandLink>
+<h:commandLink action="atualizarFuncionario" class="btn btn-primary" actionListener="#{fun.sel}" value="Editar" ></h:commandLink>
 	<br></br>
-	<h:commandLink action="excluir" actionListener="#{fun.sel}" value="APAGAR"></h:commandLink>
+		<h:commandButton  class="btn btn-primary" value="Inativar" action="#{fun.inativar}"></h:commandButton>
 </h:column>
 </h:dataTable>
 <br></br><br></br>
 <h:commandButton value="Voltar" class="btn btn-primary" action="inserirFuncionario" actionListener="#{fun.insert}"></h:commandButton>
+                          
             	 </fieldset>
         	</form>
     	 </div>

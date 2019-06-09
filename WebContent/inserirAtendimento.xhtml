@@ -48,10 +48,8 @@
 							<div class="col-lg-12 col-md-12">
 								<div class="form-group">
 								<label jsf:for=" ">Selecione um funcionario:</label>
-								<br></br>
-									<!--quando o usuario selecionar o funcionario desejado, o valor sera guardado
-									na variavel abaixo a ate.funcionario-->		
-									<h:selectOneMenu value="#{ate.functionario}">
+								<br></br>	
+									<h:selectOneMenu value="#{ate.functionario}" style="height:35px; width:750px; border-radius:5px;" >
 										<f:selectItems value="#{ate.funcionariosList}" 
 											var="a" itemLabel="#{a.nome}"
 											styleClass="text-danger" itemValue="#{a}" />
@@ -66,9 +64,8 @@
 								<div class="form-group">
 								<label jsf:for=" ">Selecione um Cliente:</label>
 								<br></br>
-									<!--quando o usuario selecionar o funcionario desejado, o valor sera guardado
-									na variavel abaixo a ate.funcionario-->		
-									<h:selectOneMenu value="#{ate.client}">
+									<h:selectOneMenu value="#{ate.client}" style="height:35px; width:750px; border-radius:5px;">
+									
 										<f:selectItems value="#{ate.clientesList}" 
 											var="a" itemLabel="#{a.nomecliente}"
 											styleClass="text-danger" itemValue="#{a}" />
@@ -85,7 +82,7 @@
 								<div class="form-group" >
 								<label jsf:for=" ">Selecione um tipo de atedimento:</label>
 								<br></br>	
-									<h:selectOneMenu value="#{ate.tprod}">
+									<h:selectOneMenu value="#{ate.tprod}" style="height:35px; width:750px; border-radius:5px;">
 										<f:selectItems value="#{ate.tipoServicosList}" 
 											var="a" itemLabel="#{a.descricaoserv}"
 											styleClass="text-danger" itemValue="#{a}" />

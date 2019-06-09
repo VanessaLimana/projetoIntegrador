@@ -45,7 +45,7 @@
 <!-- id, nome, email, cpf, sexo, telefone -->
 
 
-<h:dataTable value="#{cli.clientes}" var="cliente" border="0" style="width:100%;height:30px;border-radius: 3px;">
+<h:dataTable value="#{cli.clientes}" var="cliente" border="0" style="width:100%;height:300px;border-radius: 3px;">
 
 
 
@@ -110,7 +110,7 @@
 		<h:outputText value="Ações"></h:outputText>
 	</f:facet>
 	
-<h:commandLink action="atualizarCliente" class="btn btn-primary" actionListener="#{cli.sel}" value="Editar"></h:commandLink>
+<h:commandLink action="atualizarCliente" class="btn btn-primary" actionListener="#{cli.sel}" value="Editar" ></h:commandLink>
 	<br></br>
 		<h:commandButton  class="btn btn-primary" value="Inativar" action="#{cli.inativar}"></h:commandButton>
 </h:column>
