@@ -6,7 +6,9 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:jsf="http://xmlns.jcp.org/jsf" >
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:p="http://primefaces.org/ui"
+     template="menu.xhtml"> 
 
  
     
@@ -18,6 +20,13 @@
         
 
         <title>Cadastro de Funcionarios</title>
+			<h:body>
+				<h:form>
+					<p>Welcome #{login.user}</p>
+					<h:commandLink action="#{login.logout}" value="Logout"></h:commandLink>
+				</h:form>
+			</h:body>
+
 
         <link rel="stylesheet" type="text/css"
               href="#{request.contextPath}/resources/bootstrap/3.3.7/css/bootstrap.min.css"/>

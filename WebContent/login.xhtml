@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+	
+	
+	
+<h:head>
+	<title>login</title>
+	
+<link rel="stylesheet" type="text/css"
+	href="#{request.contextPath}/resources/bootstrap/3.3.7/css/bootstrap.min.css" />
+<h:outputStylesheet name="css/stylesheet.css" />
+</h:head>
+
+<body jsf:id="body">
+	<header>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">Login - Sistema para cadastro de Atendimentos - Sua Beleza</a>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+<h:body>
+	<h:form>
+		<!--  <h:selectOneMenu value="#{ate.tprod}" style="height:35px; width:750px; border-radius:5px;">
+		 -->
+		 
+		 
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
+                    <form jsf:id="form" jsf:prependId="false">
+                        <fieldset>
+                            <legend>Dados Funcionario</legend>
+		<h:outputText value="Nome de usuario" /><h:outputText></h:outputText>
+		<br></br>
+		<h:inputText id="username" value="#{login.user}"></h:inputText>
+		<h:message for="username"></h:message>
+				<br></br><br></br>
+		
+		
+		<h:outputText value="Senha" /><h:outputText></h:outputText>
+		<br></br>
+		<h:inputSecret id="password" value="#{login.pwd}"></h:inputSecret>
+		<h:message for="password"></h:message>
+		</fieldset>
+		
+		<h:commandButton action="#{login.validateUsernamePassword}"
+		class="btn btn-primary" value="Login"></h:commandButton>
+					</form>
+				</div>
+			</div>
+		</div>
+		           
+	</h:form>
+</h:body>
+</body>
+</html>

@@ -14,7 +14,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
-<title>Cadastro de Atendimento</title>
+        <title>Cadastro de Atendimento</title>
+			<h:body>
+				<h:form>
+					<p>Welcome #{login.user}</p>
+					<h:commandLink action="#{login.logout}" value="Logout"></h:commandLink>
+				</h:form>
+			</h:body>
 
 <link rel="stylesheet" type="text/css"
 	href="#{request.contextPath}/resources/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -31,7 +37,7 @@
 				<div class="navbar-header">
 					<a class="navbar-brand" href="/">Cadastro</a>
 				</div>
-							</div>
+			</div>
 		</nav>
 	</header>
 
