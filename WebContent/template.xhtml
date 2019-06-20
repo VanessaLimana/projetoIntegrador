@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+
+<ui:composition xmlns:ui=“http://java.sun.com/jsf/facelets”
+template="./template.xhtml"
+xmlns:h=“http://java.sun.com/jsf/html”
+xmlns:p=“http://primefaces.prime.com.tr/ui”
+xmlns:f=“http://java.sun.com/jsf/core”>
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="./css/skin.css"/>
+    <title>Título</title>
+</h:head>
+
+<h:body>
+
+    <h:form id="barraDeFerramentas">
+        <p:toolbar>
+            <p:toolbarGroup align="left">
+                <p:menuButton value="Menu 1">
+                    <p:menuitem value="Item de Menu 1" action="inserirCliente" ajax="false"/>
+                    <p:menuitem value="Item de Menu 2" action="pagina2" ajax="false"/>
+                </p:menuButton>
+                <p:commandButton value="Menu 2" action="pagina3" ajax="false"/>
+            </p:toolbarGroup>
+        </p:toolbar>
+    </h:form>
+
+    	<div><ui:insert name="Conteudo"> Aqui vai o conteudo </ui:insert></div>
+	</h:body>
+</ui:composition>

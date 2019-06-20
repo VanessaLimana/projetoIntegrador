@@ -1,4 +1,4 @@
-package br.com.salao.dto;
+/* package br.com.salao.dto;
 
 
 import java.io.Serializable;
@@ -65,10 +65,9 @@ public class Login implements Serializable {
 		}
 	}
 
-	//logout event, invalidate session
 	public String logout() {
 		HttpSession session = SessionUtils.getSession();
 		session.invalidate();
 		return "login";
-	}
-}
+	} 
+} */

@@ -1,4 +1,4 @@
-package br.com.salao.beans;
+/* package br.com.salao.beans;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
@@ -30,3 +30,4 @@ public class SessionUtils {
 			return null;
 	}
 }
+ */ 

@@ -116,8 +116,7 @@
 	
 <h:commandLink action="atualizarAtendimento" class="btn btn-primary" actionListener="#{ate.sel}" value="Editar" ></h:commandLink>
 	<br></br>
-		<h:commandButton  class="btn btn-primary" value="Inativar" action="#{ate.apagar}"></h:commandButton>
-</h:column>
+<h:commandLink action="excluir" actionListener="#{ate.sel}" value="Inativar"></h:commandLink></h:column>
 </h:dataTable>
 <br></br><br></br>
 <h:commandButton value="Voltar" class="btn btn-primary" action="inserirAtendimento" actionListener="#{ate.insert}"></h:commandButton>
@@ -126,8 +125,7 @@
         	</form>
     	 </div>
    	 </div>
-    </div>
-              
+    </div>  
                            
 
         <h:outputScript name="js/jquery-3.2.1.min.js"/>

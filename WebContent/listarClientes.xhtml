@@ -112,7 +112,9 @@
 	
 <h:commandLink action="atualizarCliente" class="btn btn-primary" actionListener="#{cli.sel}" value="Editar" ></h:commandLink>
 	<br></br>
-		<h:commandButton  class="btn btn-primary" value="Inativar" action="#{cli.inativar}"></h:commandButton>
+
+	<h:commandLink action="excluir" actionListener="#{cli.sel}" value="Inativar"></h:commandLink>
+
 </h:column>
 </h:dataTable>
 <br></br><br></br>

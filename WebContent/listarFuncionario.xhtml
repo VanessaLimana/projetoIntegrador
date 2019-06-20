@@ -112,7 +112,7 @@
 	</f:facet>
 	<h:outputText value="#{funcionario.endereco}"></h:outputText>
 </h:column>
-endereco
+
 <h:column>
 	<f:facet name="header">
 		<h:outputText value="Ações"></h:outputText>
@@ -120,8 +120,7 @@ endereco
 	
 <h:commandLink action="atualizarFuncionario" class="btn btn-primary" actionListener="#{fun.sel}" value="Editar" ></h:commandLink>
 	<br></br>
-		<h:commandButton  class="btn btn-primary" value="Inativar" action="#{fun.inativar}"></h:commandButton>
-</h:column>
+<h:commandLink action="excluir" actionListener="#{fun.sel}" value="Inativar"></h:commandLink></h:column>
 </h:dataTable>
 <br></br><br></br>
 <h:commandButton value="Voltar" class="btn btn-primary" action="inserirFuncionario" actionListener="#{fun.insert}"></h:commandButton>

@@ -7,9 +7,9 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:form>
-	<h:outputText value="Deseja excluir o cliente: #{cli.dto.status}"></h:outputText>
+	<h:outputText value="Tem certeza que deseja excluir???: #{cli.dto.status}"></h:outputText>
 	<br/>
-	<h:commandButton value="SIM" action="#{cli.inativar}"></h:commandButton>
+	<h:commandButton value="SIM" action="#{cli.apagar}"></h:commandButton>
 	<h:commandButton value="NÃO" action="listarClientes" immediate="true"></h:commandButton>
 </h:form>
 </html>

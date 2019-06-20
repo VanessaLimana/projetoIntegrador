@@ -10,24 +10,20 @@
       xmlns:p="http://primefaces.org/ui"
      template="menu.xhtml"> 
 
- 
-    
 
     <head jsf:id="head">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        
 
-<!--         <title>Cadastro de Funcionarios</title>
+        <title>Cadastro de Atendimento</title>
 			<h:body>
 				<h:form>
 					<p>Welcome #{login.user}</p>
 					<h:commandLink action="#{login.logout}" value="Logout"></h:commandLink>
 				</h:form>
 			</h:body>
- -->
-
+			
         <link rel="stylesheet" type="text/css"
               href="#{request.contextPath}/resources/bootstrap/3.3.7/css/bootstrap.min.css"/>
         <h:outputStylesheet name="css/stylesheet.css"/>
@@ -213,17 +209,10 @@
                   <input type="submit"
                                class="btn btn-primary"
                                immediate="true"
-                               jsf:action="listarFuncionario.xhtml" 
+                               jsf:action="listarFuncionario" 
                                 value="Cancelar"/>
                                 
-                                                                
-                  <input type="submit"
-                               class="btn btn-primary"
-                               immediate="true"
-                               jsf:action="listarFuncionario" 
-                               value="Editar / Inativar"/> 
-                                              
-                                              
+                                
                  </h:panelGrid>
                                              
                               

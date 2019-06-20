@@ -1,4 +1,4 @@
-package br.com.salao.dto;
+/* package br.com.salao.dto;
 
 
 import java.io.IOException;
@@ -50,4 +50,4 @@ public class AuthorizationFilter implements Filter {
 	public void destroy() {
 
 	}
-}
+} */ 

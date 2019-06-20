@@ -18,7 +18,6 @@ public class ClienteDAO {
 			+ tbl_name + " ( nomecliente, cpf, email, sexo, telefone, status ) VALUES (?, ?, ?, ?, ?, ?)";
 	private static final String sql_update = "UPDATE clientes SET nomecliente = ?, cpf = ?, email = ?, sexo = ? telefone = ? status = ?  WHERE id = ?";
 	private static final String sql_delete = "DELETE FROM clientes WHERE id = ?";
-	private static final String sql_select = "SELECT * FROM clientes";
 	private static final String sql_by_id = "SELECT * FROM clientes WHERE id = ?";
 	
 	private Connection conn = null;

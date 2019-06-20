@@ -52,7 +52,7 @@ public class FuncionarioBean {
 	public FuncionarioDTO getDto(){
 		return this.funcionarioDto;
 	}
-	//tomcat ta meio bugado...
+
 	public void setDto(FuncionarioDTO dto){
 		this.funcionarioDto = dto;
 	}
@@ -78,7 +78,7 @@ public class FuncionarioBean {
 		
 		funcionarioDao = new FuncionarioDAO();
 		if(funcionarioDao.delete(funcionarioDto)){
-			retorno = "listar";
+			retorno = "listarFuncionario";
 		}
 		
 		return retorno;

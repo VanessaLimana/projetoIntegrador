@@ -13,14 +13,11 @@
 			<to-view-id>/admin.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-
-
 <application>
 <resource-bundle>
-	<base-name>br.com.devmedia.labels</base-name>
+	<base-name>br.com.salao.labels</base-name>
 	<var>labels</var>
 </resource-bundle>
-
 <locale-config>
 	<default-locale>pt</default-locale>
 	<supported-locale>en</supported-locale>

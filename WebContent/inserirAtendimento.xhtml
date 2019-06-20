@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-
+<!-- 
         <title>Cadastro de Atendimento</title>
 			<h:body>
 				<h:form>
@@ -21,7 +21,7 @@
 					<h:commandLink action="#{login.logout}" value="Logout"></h:commandLink>
 				</h:form>
 			</h:body>
-
+ -->
 <link rel="stylesheet" type="text/css"
 	href="#{request.contextPath}/resources/bootstrap/3.3.7/css/bootstrap.min.css" />
 <h:outputStylesheet name="css/stylesheet.css" />
@@ -102,7 +102,7 @@
 								<!-- dia -->
 						<div class="row">
 							<div class="col-lg-12 col-md-12">
-								<div class="form-group #{!nome.valid ? 'has-error' : ''}">
+								<div class="form-group #{!dia.valid ? 'has-error' : ''}">
 									<label jsf:for="nome">Dia</label> <input type="text"
 										jsf:id="dia" jsf:binding="#{dia}" class="form-control"
 										placeholder="00/00/0000" jsf:value="#{ate.dto.dia}" />
@@ -165,10 +165,8 @@
 
 
 						<input type="submit" class="btn btn-primary" immediate="true"
-							jsf:action="erro" value="Cancelar" />
+							jsf:action="listarAtendimento" value="Cancelar" />
 
-						<input type="submit" class="btn btn-primary" immediate="true"
-							jsf:action="listarClientes" value="Editar / Inativar" />
 
 					</h:panelGrid>
 

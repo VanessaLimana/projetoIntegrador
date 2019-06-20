@@ -61,7 +61,7 @@ public class ClienteBean {
 		clienteDao = new ClienteDAO();
 		
 		if(clienteDao.update(clienteDto)){
-			retorno = "listar";
+			retorno = "listarClientes";
 		}
 		
 		return retorno;
@@ -72,7 +72,7 @@ public class ClienteBean {
 		
 		clienteDao = new ClienteDAO();
 		if(clienteDao.delete(clienteDto)){
-			retorno = "listar";
+			retorno = "listarCliente";
 		}
 		
 		return retorno;

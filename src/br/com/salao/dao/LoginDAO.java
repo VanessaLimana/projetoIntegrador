@@ -1,4 +1,4 @@
-package br.com.salao.dao;
+/* package br.com.salao.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,3 +34,4 @@ public class LoginDAO {
 		return false;
 	}
 }
+ */ 

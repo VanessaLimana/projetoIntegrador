@@ -22,7 +22,7 @@
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="/">Login - Sistema para cadastro de Atendimentos - Sua Beleza</a>
+					<a class="navbar-brand" href="/">Sistema para cadastro de Atendimentos - Sua Beleza</a>
 				</div>
 			</div>
 		</nav>
@@ -39,27 +39,26 @@
                 <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
                     <form jsf:id="form" jsf:prependId="false">
                         <fieldset>
-                            <legend>Dados Funcionario</legend>
+                            <legend>Login</legend>
 		<h:outputText value="Nome de usuario" /><h:outputText></h:outputText>
 		<br></br>
-		<h:inputText id="username" value="#{login.user}"></h:inputText>
+		<h:inputText id="username" style="height:35px; width:150px; border-radius:5px;" value="#{login.user}"></h:inputText>
 		<h:message for="username"></h:message>
 				<br></br><br></br>
 		
 		
 		<h:outputText value="Senha" /><h:outputText></h:outputText>
 		<br></br>
-		<h:inputSecret id="password" value="#{login.pwd}"></h:inputSecret>
+		<h:inputSecret id="password" style="height:35px; width:150px; border-radius:5px;" value="#{login.pwd}"></h:inputSecret>
 		<h:message for="password"></h:message>
 		</fieldset>
-		
+		<br></br>
 		<h:commandButton action="#{login.validateUsernamePassword}"
 		class="btn btn-primary" value="Login"></h:commandButton>
 					</form>
 				</div>
 			</div>
 		</div>
-		           
 	</h:form>
 </h:body>
 </body>

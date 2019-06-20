@@ -12,8 +12,14 @@ public class DB {
 	private static final String user = "root";
 	private static final String pw = "";
 	
-	public Connection getConn() throws ClassNotFoundException, SQLException{
+	public static Connection getConn() throws ClassNotFoundException, SQLException{
 		Class.forName(driver);
 		return DriverManager.getConnection("jdbc:mysql://" + server + "/" + databaseName, user, pw);
+	}
+	public static void close(Connection conn) {
+		try {
+			conn.close();
+		} catch (Exception ex) {
+		}
 	}
 }
